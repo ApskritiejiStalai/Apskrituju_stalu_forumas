@@ -9,19 +9,42 @@
     <link href="css/vendor/bootstrap.css" rel="stylesheet" />
     <link href="css/vendor/font-awesome.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
+    <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body>
 
     <header>
+        <div class="pullRight">
+            <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Prisijungti</button>
+            <div id="id01" class="modal">
+
+                <form class="modal-content animate" action="/action_page.php" method="post">
+
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    
+                    <div class="container2">
+                        <label for="uname"><b>Prisijungimo vardas</b></label>
+                        <input type="text" name="uname" required>
+
+                        <label for="psw"><b>Slaptažodis</b></label>
+                        <input type="password" name="psw" required>
+
+                        <button type="submit">Prisijungti</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="container">
             <div class="logo">
                 <a href="pagrindinis.html"><img src="assets/img/logobalta.png" alt="" /></a>
+
             </div>
             <div class="menu">
                 <ul>
                     <li><a href="pagrindinis.html" class="active">Pagrindinis</a></li>
                     <li><a href="moduliai.html">Moduliai</a></li>
-                    <li><a href="diskusijos.html">diskusijos</a></li>
+                    <!--<li><a href="diskusijos.html">diskusijos</a></li>-->
                 </ul>
             </div>
             <div class="mobile-menu"><i class="fa fa-bars"></i></div>
@@ -80,8 +103,10 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/ktu.lt"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/ktuspace"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/school/ktu/"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://www.youtube.com/user/ktuvideo"><i class="fa fa-youtube"></i></a></li>
                     </ul>
                 </div>
                 <div class="col-md-6 col-sm-12">
@@ -105,5 +130,16 @@
     <script src="js/vendor/isotope.pkgd.min.js"></script>
     <script src="js/vendor/odometer.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

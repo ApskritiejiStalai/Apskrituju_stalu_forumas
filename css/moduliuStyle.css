@@ -1,0 +1,43 @@
+.semester {
+	width: 100%;
+	height: auto;
+}
+	.semester th {
+		padding: 5px;
+		border: 1px solid #562e72;
+		padding-bottom: 5px;
+		/*align-items: center;*/
+	}
+
+	.semester tr {
+		align-items: center;
+		border: 1px solid #562e72;
+		padding-bottom: 5px;
+		/*align-items: center;*/
+	}
+
+	.semester td {
+		padding: 5px;
+		border: 1px solid #562e72;
+		/*align-items: center;*/
+		/*text-align:center;*/
+	}
+
+.my_table tr {
+	display: flex;
+}
+
+.my_table td {
+	margin: 2px;
+	height: 100px;
+	display: flex;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
+}
+.my_table th {
+	height: 90px;
+}
+
+
+

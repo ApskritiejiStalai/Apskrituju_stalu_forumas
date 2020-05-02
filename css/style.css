@@ -16,23 +16,28 @@
 
     .forumTable th {
         padding: 5px;
-        /*border: 1px solid #562e72;*/
+        border: 1px solid #562e72;
         padding-bottom:500px;
     }
 
     .forumTable tr {
-        /*border: 1px solid #562e72;*/
+        border: 1px solid #562e72;
         padding-bottom: 500px;
     }
 
     .forumTable td {
         padding: 5px;
-        /*border: 1px solid #562e72;*/
+        border: 1px solid #562e72;
         /*text-align:center;*/
     }
 .pullLeft {
     float: left;
     display: inline-block;
+}
+.pullRight {
+    float: right;
+    display: inline-block;
+    padding-right:50px;
 }
 .search {
     font-family: sans-serif;
