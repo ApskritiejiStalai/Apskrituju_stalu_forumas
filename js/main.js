@@ -1,6 +1,5 @@
-/*--------------------------------------------------
-Website by Websolute
---------------------------------------------------*/jQuery(document).ready(function ($) {
+jQuery(document).ready(function ($) {
+    
     function isotopeFilter() {
         $('.recent-works--items').isotope({
             itemSelector: '.recent-works--items__item',
