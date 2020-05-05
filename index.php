@@ -19,10 +19,18 @@
 <body>
     <header>
         
+        <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
+            <div class="pullRight">
+                <form action="" method="post">
+                    <button  style="width:auto;" type="logout" name="logout">Atsijungti</button>
+                </form>
+            </div>
+            <?php }?>
         
         
         <?php if( isset($_SESSION['logged']) && $_SESSION['logged'] != true || !isset($_SESSION['logged']) ) { ?>
         <div class="pullRight">
+
 
             <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Prisijungti</button>
             
@@ -52,13 +60,7 @@
             </div>
             
             
-            <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
-            <div class="menu">
-                <form action="" method="post">
-                    <button type="logout" name="logout">Atsijungti</button>
-                </form>
-            </div>
-            <?php } //logout mygtuka sutvarkyt?>
+            
             
             <div class="menu">
                 <ul>

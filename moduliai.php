@@ -19,12 +19,21 @@
     <link href="css/vendor/slick.css" rel="stylesheet" />
     <link href="css/vendor/slick-theme.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/moduliuStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 
     <header>
+    <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
+            <div class="pullRight"> 
+                <form action="" method="post">
+                    <button  style="width:auto;" type="logout" name="logout">Atsijungti</button>
+                </form>
+            </div>
+            <?php } ?>
+
         <div class="container">
             <div class="logo">
                 <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
@@ -38,13 +47,9 @@
             <div class="mobile-menu"><i class="fa fa-bars"></i></div>
         </div>
         
-        <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
-            <div class="menu">
-                <form action="" method="post">
-                    <button type="logout" name="logout">Atsijungti</button>
-                </form>
-            </div>
-            <?php } //logout mygtuka sutvarkyt?>
+       
+
+            
         
     </header>
 
@@ -54,14 +59,6 @@
             <p>Informatikos fakulteto moduliai</p>
         </div>
     </div>
-
-    <!--<div class="wrapper">-->
-    <!--<div class="search box">
-        <input type="search" name="box" placeholder="Suraskite modulį, įvesdami pavadinimą arba kodą" />
-        <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-    </div>-->
-
-
 
     <section class="four-elements">
         <div class="container">
