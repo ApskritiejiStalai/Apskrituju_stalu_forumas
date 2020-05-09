@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <?php
 session_start();
 include('Control/login.control.php');
@@ -15,7 +15,7 @@ include('Control/login.control.php');
         <link href="css/main.css" rel="stylesheet" />
         <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
         <link rel="stylesheet" type="text/css" href="css/login.css">
-         <link rel="stylesheet" type="text/css" href="css/moduliuStyle.css">
+        <link rel="stylesheet" type="text/css" href="css/moduliuStyle.css">
     </head>
     <body>
         <header>
@@ -76,19 +76,30 @@ include('Control/login.control.php');
 
                             <div class="container2">
                                 <label for="uname"><b>Prisijungimo vardas</b></label>
-                                <input type="text" name="uname" required>
+                                <input type="text" name="uname" id="uname" required>
 
                                 <label for="psw"><b>Slaptažodis</b></label>
-                                <input type="password" name="psw" required>
+                                <input type="password" name="psw"  id="psw" required>
 
-                                <button type="submit" name="submit">Prisijungti</button>
+                                <button " type="submit" name="submit">Prisijungti</button>
 
                             </div>
-                        </form>
+                        </form>                       
                     </div>
                 </div>
             <?php } ?>
+            <?php if (isset($_GET['login']) && $_GET['login'] == 'false') { ?>
 
+                <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+                <script type="text/javascript">
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Neteisingai įvestas prisijungimo vardas arba slaptažodis ',
+                                    footer: 'Ar esate registruotas vartotojas?'
+                                })
+                </script>
+            <?php } ?>  
             <div class="container">
                 <div class="logo">
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
