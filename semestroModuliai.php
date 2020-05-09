@@ -78,7 +78,7 @@
 
     <div class="intro-page" style="background-image: url('assets/img/backgr.jpg')">
         <div class="container">
-            <h1>* semestro moduliai</h1>  <!-- cia reikia kad vietoj zvaigzdutes semetro numeri rodytu ar pilna pavadinima --> 
+            <h1><?php echo $_GET['semester']; ?>  semestro moduliai</h1>  <!-- cia reikia kad vietoj zvaigzdutes semetro numeri rodytu ar pilna pavadinima --> 
         </div>
     </div>
 
