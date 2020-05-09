@@ -59,21 +59,26 @@ include('Control/login.control.php');
 
                         </div>
                     </form>
+                    <script>
+// Get the modal
+                        var modal = document.getElementById('noti');
+
+// When the user clicks anywhere outside of the modal, close it
+                        window.onclick = function (event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        }
+                    </script>
                 </div>                 
             </div>
 
             <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] != true || !isset($_SESSION['logged'])) { ?>
                 <div class="pullRight">
-
-
                     <button onclick="document.getElementById('id01').style.display = 'block'" style="width:auto;">Prisijungti</button>
-
                     <div id="id01" class="modal">
-
                         <form class="modal-content animate" action="?login" method="post">
-
                             <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>
-
                             <div class="container2">
                                 <label for="uname"><b>Prisijungimo vardas</b></label>
                                 <input type="text" name="uname" id="uname" required>
@@ -96,7 +101,8 @@ include('Control/login.control.php');
                                     icon: 'error',
                                     title: 'Oops...',
                                     text: 'Neteisingai įvestas prisijungimo vardas arba slaptažodis ',
-                                    footer: 'Ar esate registruotas vartotojas?'
+                                    showConfirmButton: false,
+                                    timer: 2000
                                 })
                 </script>
             <?php } ?>  
@@ -201,16 +207,6 @@ include('Control/login.control.php');
         <script>
             // Get the modal
             var modal = document.getElementById('id01');
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        </script>
-        <script>
-            var modal = document.getElementById('noti');
 
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function (event) {
