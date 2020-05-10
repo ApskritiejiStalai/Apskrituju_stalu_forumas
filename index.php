@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <?php
 session_start();
 include('Control/login.control.php');
@@ -23,14 +23,14 @@ include('Control/login.control.php');
             <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
                 <div class="pullRight">
                     <form action="" method="post">
-                        <button  style="width:auto;" type="logout" name="logout">Atsijungti</button>
+                        <button  style="width:auto; margin-top: 30px;" type="logout" name="logout">Atsijungti</button>
                     </form>
                 </div>
             <?php } ?>
 
             <div class="pullLeft">
 
-                <button onclick="document.getElementById('noti').style.display = 'block'" style="width:auto; border-radius: 30px;">
+                <button onclick="document.getElementById('noti').style.display = 'block'" style="width:auto; border-radius: 30px; margin-top: 30px;">
                     <i class="fa fa-bell"></i>
                     <span class="noti">4</span>
                 </button>
@@ -46,7 +46,7 @@ include('Control/login.control.php');
                                 <thead>
                                     <tr>
                                         <th>Pavadinimas</th>
-                                        <th>Kiekis</th>
+                                        <th>Data</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,7 +59,7 @@ include('Control/login.control.php');
 
                         </div>
                     </form>
-                    <script>
+<!--                    <script>
 // Get the modal
                         var modal = document.getElementById('noti');
 
@@ -69,7 +69,7 @@ include('Control/login.control.php');
                                 modal.style.display = "none";
                             }
                         }
-                    </script>
+                    </script>-->
                 </div>                 
             </div>
 
@@ -86,7 +86,7 @@ include('Control/login.control.php');
                                 <label for="psw"><b>Slaptažodis</b></label>
                                 <input type="password" name="psw"  id="psw" required>
 
-                                <button " type="submit" name="submit">Prisijungti</button>
+                                <button  type="submit" name="submit">Prisijungti</button>
 
                             </div>
                         </form>                       
@@ -118,7 +118,7 @@ include('Control/login.control.php');
                     <ul>
                         <li><a href="index.php" class="active">Pagrindinis</a></li>
                         <li><a href="moduliai.php">Moduliai</a></li>
-                        <!--<li><a href="diskusijos.html">diskusijos</a></li>-->
+                        <!--<li><a href="komentarai.php">Komentarai</a></li>-->
                     </ul>
                 </div>
                 <div class="mobile-menu"><i class="fa fa-bars"></i></div>

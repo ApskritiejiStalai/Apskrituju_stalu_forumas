@@ -38,6 +38,20 @@
 .my_table th {
 	height: 90px;
 }
+.tcomments {
+	height: auto;
+}
+	.tcomments th {
+		padding: 5px;
+	}
 
+	.tcomments tr {
+		align-items: center;
+	}
 
+	.tcomments td {
+		padding: 5px;
+		align-items: center;
+		text-align:center;
+	}
 

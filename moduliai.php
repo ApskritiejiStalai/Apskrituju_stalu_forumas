@@ -29,7 +29,7 @@
     <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
             <div class="pullRight"> 
                 <form action="" method="post">
-                    <button  style="width:auto;" type="logout" name="logout">Atsijungti</button>
+                    <button  style="width:auto; margin-top: 30px;" type="logout" name="logout">Atsijungti</button>
                 </form>
             </div>
             <?php } ?>
