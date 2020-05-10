@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <?php
 session_start();
 include('Control/login.control.php');
@@ -75,7 +75,7 @@ include('Control/login.control.php');
 
             <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] != true || !isset($_SESSION['logged'])) { ?>
                 <div class="pullRight">
-                    <button onclick="document.getElementById('id01').style.display = 'block'" style="width:auto;">Prisijungti</button>
+                    <button onclick="document.getElementById('id01').style.display = 'block'" style="width:auto; margin-top: 30px;">Prisijungti</button>
                     <div id="id01" class="modal">
                         <form class="modal-content animate" action="?login" method="post">
                             <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>

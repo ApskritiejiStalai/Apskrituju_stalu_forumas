@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <?php
 session_start();
 include('Control/login.control.php');
 ?>
 <html lang="en">
     <head>
-        <title>ASF</title>
+        <title>ASF komentarai</title>
         <link rel="icon" href="assets/img/icon.png">
         <meta charset="utf-8" />
         <!--<link rel="icon" href="favicon.png" type="image/x-icon" />-->
@@ -28,60 +28,13 @@ include('Control/login.control.php');
                 </div>
             <?php } ?>
 
-            <div class="pullLeft">
-
-                <button onclick="document.getElementById('noti').style.display = 'block'" style="width:auto; border-radius: 30px; margin-top: 30px;">
-                    <i class="fa fa-bell"></i>
-                    <span class="noti">4</span>
-                </button>
-                <div id="noti" class="modal">
-
-                    <form class="modal-content animate" action="?login" method="post">
-
-                        <span onclick="document.getElementById('noti').style.display = 'none'" class="close" title="Close Modal">&times;</span>
-
-                        <div class="container2">
-                            <label style="color:#3c88e7;" for="notification"><b><h1>* nauji pranešimai</h1></b></label>
-                            <table class="semester">
-                                <thead>
-                                    <tr>
-                                        <th>Pavadinimas</th>
-                                        <th>Data</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </form>
-<!--                    <script>
-// Get the modal
-                        var modal = document.getElementById('noti');
-
-// When the user clicks anywhere outside of the modal, close it
-                        window.onclick = function (event) {
-                            if (event.target == modal) {
-                                modal.style.display = "none";
-                            }
-                        }
-                    </script>-->
-                </div>                 
-            </div>
 
 
             <div class="container">
                 <div class="logo">
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
                 </div>
-
-
-
-
+                
                 <div class="menu">
                     <ul>
                         <li><a href="index.php">Pagrindinis</a></li>
