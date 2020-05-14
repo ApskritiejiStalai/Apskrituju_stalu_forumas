@@ -74,9 +74,11 @@ include('Control/login.control.php');
                             <th></th>
                         </tr>
                         <tr>
-                            <td><i class="fa fa-arrow-circle-up fa-2x" aria-hidden="true"></i></td>
+                            <td><button style="display: inline-block; min-width: 0;padding: none;border: none;text-align: center;font:none;background: none; color: gray; margin: 0;
+                            border-radius: none;text-transform: none; -webkit-box-shadow: none; box-shadow: none; "><i class="fa fa-arrow-circle-up fa-2x" aria-hidden="true"></i></button></td>
                             <td> <textarea id="comments" rows="2" cols="75"></textarea> </td>
-                            <td><i class="fa fa-flag" aria-hidden="true"></i></td>
+                            <td><button style="display: inline-block; min-width: 0;padding: none;border: none;text-align: center;font:none;background: none; color: gray; margin: 0;
+                            border-radius: none;text-transform: none; -webkit-box-shadow: none; box-shadow: none;"><i class="fa fa-flag" aria-hidden="true"></i></button></td>
                         </tr>
 
                     </table>
