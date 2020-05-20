@@ -18,10 +18,15 @@
         $result = $loginAttempt->TryLogin($username, $password);
 
         switch ($result){
-            case "user":
+            case "user":{
+                $_SESSION['user'] = "student";
+                $_SESSION['name'] = $username;
                 header("Location: index.php?login=user");
+            }
                 break;
             case "admin":
+                $_SESSION['user'] = "admin";
+                $_SESSION['name'] = $username;
                 header("Location: index.php?login=admin");
                 break;
             default:

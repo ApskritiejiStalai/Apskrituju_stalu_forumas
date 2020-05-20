@@ -1,7 +1,8 @@
-﻿﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <?php
 session_start();
 include('Control/login.control.php');
+include('Control/admin.control.php');
 ?>
 <html lang="en">
     <head>
@@ -19,7 +20,11 @@ include('Control/login.control.php');
     </head>
     <body>
         <header>
-
+            <!--//---------------------------------------------------->
+            <!--reik padaryt graziai username kazkur-->
+           <?php  if(isset($_SESSION['name'])) echo $_SESSION['name']; ?>
+          <!---------------------------------------------------------------->  
+          
             <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
                 <div class="pullRight">
                     <form action="" method="post">
@@ -29,47 +34,37 @@ include('Control/login.control.php');
             <?php } ?>
 
             <div class="pullLeft">
-
-                <button onclick="document.getElementById('noti').style.display = 'block'" style="width:auto; border-radius: 30px; margin-top: 30px;">
+                
+                <button <?php if(!isset($_SESSION['user']) || $_SESSION['user'] != "admin") { ?> style='display: none;' <?php } ?> onclick="document.getElementById('noti').style.display = 'block'" style="width:auto; border-radius: 30px; margin-top: 30px;">
                     <i class="fa fa-bell"></i>
-                    <span class="noti">4</span>
+                    <?php if($newComments != false) { ?> <span class="noti"></span> <?php } ?>
                 </button>
+                
                 <div id="noti" class="modal">
-
                     <form class="modal-content animate" action="?login" method="post">
-
                         <span onclick="document.getElementById('noti').style.display = 'none'" class="close" title="Close Modal">&times;</span>
-
                         <div class="container2">
-                            <label style="color:#3c88e7;" for="notification"><b><h1>* nauji pranešimai</h1></b></label>
+                            <label style="color:#3c88e7;" for="notification"><b><h1>Nauji pranešimai</h1></b></label>
                             <table class="semester">
                                 <thead>
                                     <tr>
-                                        <th>Pavadinimas</th>
+                                        <th>Modulio kodas</th>
                                         <th>Data</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php if($newComments != false) 
+                                            foreach($newComments as $key=>$val) { ?>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
+                                        <td> <a href="redaguotiKomentara.php?id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Modulio_id']; ?></td>
+                                        <td> <a href="redaguotiKomentara.php?id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Data']; ?></td>
                                     </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
 
                         </div>
                     </form>
-<!--                    <script>
-// Get the modal
-                        var modal = document.getElementById('noti');
-
-// When the user clicks anywhere outside of the modal, close it
-                        window.onclick = function (event) {
-                            if (event.target == modal) {
-                                modal.style.display = "none";
-                            }
-                        }
-                    </script>-->
                 </div>                 
             </div>
 

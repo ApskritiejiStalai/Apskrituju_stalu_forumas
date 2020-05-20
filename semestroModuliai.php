@@ -101,8 +101,8 @@
                 </tr>
                 <?php foreach($data as $key=>$var) { ?>
                 <tr>
-                     <td> <a href="komentarai.php?id=<?php echo $var['Kodas']; ?>" ><?php echo $var['Kodas']; ?> </td>
-                     <td> <a href="komentarai.php?id=<?php echo $var['Kodas']; ?>" ><?php echo $var['Pavadinimas']; ?> </td>
+                     <td> <a href="komentarai.php?id=<?php echo $var['Kodas']; ?>&name=<?php echo $var['Pavadinimas']; ?>" ><?php echo $var['Kodas']; ?> </td>
+                     <td> <a href="komentarai.php?id=<?php echo $var['Kodas']; ?>&name=<?php echo $var['Pavadinimas']; ?>" ><?php echo $var['Pavadinimas']; ?> </td>
                 </tr>
                 <?php } ?>
             </table>

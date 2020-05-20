@@ -3,15 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/tuc/Desktop/uni%20shit/IV%20semestras/Semstro%20projektas/xampp/htdocs/ASF/moduliai.php</file>
-            <file>file:/C:/Users/tuc/Desktop/uni%20shit/IV%20semestras/Semstro%20projektas/xampp/htdocs/ASF/Model/module.php</file>
-            <file>file:/C:/Users/tuc/Desktop/uni%20shit/IV%20semestras/Semstro%20projektas/xampp/htdocs/ASF/Control/login.control.php</file>
-            <file>file:/C:/Users/tuc/Desktop/uni%20shit/IV%20semestras/Semstro%20projektas/xampp/htdocs/ASF/semestroModuliai.php</file>
-            <file>file:/C:/Users/tuc/Desktop/uni%20shit/IV%20semestras/Semstro%20projektas/xampp/htdocs/ASF/Model/login.php</file>
-            <file>file:/C:/Users/tuc/Desktop/uni%20shit/IV%20semestras/Semstro%20projektas/xampp/htdocs/ASF/Control/module.control.php</file>
-            <file>file:/C:/Users/tuc/Desktop/uni%20shit/IV%20semestras/Semstro%20projektas/xampp/htdocs/ASF/livesearch.php</file>
-            <file>file:/C:/Users/tuc/Desktop/uni%20shit/IV%20semestras/Semstro%20projektas/xampp/htdocs/ASF/Model/db.php</file>
-            <file>file:/C:/Users/tuc/Desktop/uni%20shit/IV%20semestras/Semstro%20projektas/xampp/htdocs/ASF/index.php</file>
+            <file>file:/C:/Users/tuc/Desktop/uni%20shit/IV%20semestras/Semstro%20projektas/xampp/htdocs/ASF/Control/comment.control.php</file>
+            <file>file:/C:/Users/tuc/Desktop/uni%20shit/IV%20semestras/Semstro%20projektas/xampp/htdocs/ASF/Model/comment.php</file>
+            <file>file:/C:/Users/tuc/Desktop/uni%20shit/IV%20semestras/Semstro%20projektas/xampp/htdocs/ASF/redaguotiKomentara.php</file>
+            <file>file:/C:/Users/tuc/Desktop/uni%20shit/IV%20semestras/Semstro%20projektas/xampp/htdocs/ASF/komentarai.php</file>
         </group>
     </open-files>
 </project-private>
