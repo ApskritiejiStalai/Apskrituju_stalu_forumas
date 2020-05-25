@@ -18,7 +18,7 @@ class admin {
     public function newComments() {
         include 'db.php';
         
-        $query = "SELECT `id`, `Data`, `Modulio_id`, `Pavadinimas` "
+        $query = "SELECT `id`, `Data`, `Modulio_id`, `Pavadinimas`, `Semestras` "
                 . "FROM `{$this->comment_table}` "
                 . "INNER JOIN `{$this->modcom_table}` "
                     . "ON `Komentaro_id` = `id` "

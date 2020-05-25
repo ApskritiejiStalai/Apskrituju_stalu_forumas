@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2020 at 11:38 PM
+-- Generation Time: 2020 m. Geg 25 d. 17:57
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.29
+-- PHP Version: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dbforumas`
+-- Database: `forumas`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_login`
+-- Sukurta duomenų struktūra lentelei `admin_login`
 --
 
 CREATE TABLE `admin_login` (
@@ -37,7 +37,7 @@ CREATE TABLE `admin_login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `admin_login`
+-- Sukurta duomenų kopija lentelei `admin_login`
 --
 
 INSERT INTO `admin_login` (`Admin_id`, `Vardas`, `Pavarde`, `Slapyvardis`, `Slaptazodis`, `Elektroninis_Pastas`) VALUES
@@ -49,21 +49,50 @@ INSERT INTO `admin_login` (`Admin_id`, `Vardas`, `Pavarde`, `Slapyvardis`, `Slap
 -- --------------------------------------------------------
 
 --
--- Table structure for table `komentarai`
+-- Sukurta duomenų struktūra lentelei `komentarai`
 --
 
 CREATE TABLE `komentarai` (
   `id` int(255) NOT NULL,
   `Komentaras` varchar(255) DEFAULT NULL,
   `Upvote` int(11) DEFAULT NULL,
-  `Redaguota` tinyint(1) DEFAULT NULL,
-  `Data` date DEFAULT NULL
+  `Perziureta` tinyint(1) DEFAULT NULL,
+  `Data` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Sukurta duomenų kopija lentelei `komentarai`
+--
+
+INSERT INTO `komentarai` (`id`, `Komentaras`, `Upvote`, `Perziureta`, `Data`) VALUES
+(1268, 'Samas yra fainiausias studentas -simruo', 0, 1, '2020-05-20 17:17:41'),
+(1269, 'ketvirtas - tomgir\r\n', 2, 1, '2020-05-20 17:18:20'),
+(1270, 'penktas <3 daldel\r\n', 0, 1, '2020-05-20 17:19:00'),
+(1271, 'egis bieliauskaite sestas', 0, 1, '2020-05-20 17:19:40'),
+(1272, 'arnrad septinas kometarcikas', 0, 1, '2020-05-20 17:21:26'),
+(1273, 'KOMENTARAS arnrad', 0, 1, '2020-05-20 17:26:57'),
+(1274, 'dontru komentaaariuxss', 1, 1, '2020-05-20 17:28:24'),
+(1275, 'gusger xiukas', 3, 1, '2020-05-20 17:29:58'),
+(1276, 'Vacius Usas blogas destytojas - gusger', 2, 1, '2020-05-20 17:30:41'),
+(1277, 'Jusas? More like Usas', 3, 1, '2020-05-20 17:31:11'),
+(1278, 'Cia buvo smagu, pabraizai ir gyveni toliau - gusger', 2, 1, '2020-05-20 17:31:29'),
+(1279, 'atejau, nugalejau, isejau - gusger', 1, 1, '2020-05-20 17:31:47'),
+(1280, 'Bagdono koza puiki - arnbel', 0, 1, '2020-05-20 17:32:46'),
+(1281, 'Destyojai faini - arnbel', 0, 1, '2020-05-20 17:33:16'),
+(1282, 'f', 0, 1, '2020-05-20 17:33:34'),
+(1283, 'Vacius? More like Nacius', 0, 1, '2020-05-20 17:33:52'),
+(1284, 'AutoCad? More like Easy modulis - tomgir', 0, 1, '2020-05-20 17:34:24'),
+(1285, 'Ivadas i gyvenima ', 1, 1, '2020-05-20 17:35:35'),
+(1286, 'Simas yra fainiausias studentas -simru', 0, 1, '2020-05-20 17:36:07'),
+(1287, 'Jūsų komentaras aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 0, 1, '2020-05-20 17:37:04'),
+(1288, 'Vacius Jusas? LabIaUu kAIp Jacius Vusas xdddddddddd', 0, 1, '2020-05-20 17:40:14'),
+(1289, 'simruo', 0, 1, '2020-05-20 17:41:09'),
+(1290, 'Komentuoju', 0, 1, '2020-05-20 20:17:14');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loginai`
+-- Sukurta duomenų struktūra lentelei `loginai`
 --
 
 CREATE TABLE `loginai` (
@@ -76,7 +105,7 @@ CREATE TABLE `loginai` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `moduliai`
+-- Sukurta duomenų struktūra lentelei `moduliai`
 --
 
 CREATE TABLE `moduliai` (
@@ -86,7 +115,7 @@ CREATE TABLE `moduliai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `moduliai`
+-- Sukurta duomenų kopija lentelei `moduliai`
 --
 
 INSERT INTO `moduliai` (`Kodas`, `Pavadinimas`, `Semestras`) VALUES
@@ -186,18 +215,47 @@ INSERT INTO `moduliai` (`Kodas`, `Pavadinimas`, `Semestras`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `modulio_komentaras`
+-- Sukurta duomenų struktūra lentelei `modulio_komentaras`
 --
 
 CREATE TABLE `modulio_komentaras` (
-  `Modulio_id` int(255) NOT NULL,
-  `Komentaro_id` int(11) NOT NULL
+  `Modulio_id` varchar(255) NOT NULL,
+  `Komentaro_id` int(11) NOT NULL,
+  `Studento_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Sukurta duomenų kopija lentelei `modulio_komentaras`
+--
+
+INSERT INTO `modulio_komentaras` (`Modulio_id`, `Komentaro_id`, `Studento_id`) VALUES
+('P175B100', 1274, 'C0000'),
+('P130B001', 1290, 'C0000'),
+('P175B100', 1275, 'C1111'),
+('P175B117', 1276, 'C1111'),
+('P175B118', 1277, 'C1111'),
+('P175B505', 1278, 'C1111'),
+('T120B196', 1279, 'C1111'),
+('P130B001', 1268, 'C2222'),
+('P175B100', 1280, 'C2222'),
+('P175B117', 1281, 'C2222'),
+('P130B001', 1269, 'C3333'),
+('P175B100', 1282, 'C3333'),
+('P175B118', 1283, 'C3333'),
+('P175B505', 1284, 'C3333'),
+('T120B196', 1285, 'C3333'),
+('P130B001', 1270, 'C4444'),
+('P130B001', 1271, 'C5555'),
+('P130B001', 1272, 'C6666'),
+('P175B100', 1273, 'C6666'),
+('P130B001', 1286, 'C7777'),
+('P175B100', 1287, 'C7777'),
+('P175B118', 1288, 'C7777');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student_login`
+-- Sukurta duomenų struktūra lentelei `student_login`
 --
 
 CREATE TABLE `student_login` (
@@ -211,20 +269,55 @@ CREATE TABLE `student_login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `student_login`
+-- Sukurta duomenų kopija lentelei `student_login`
 --
 
 INSERT INTO `student_login` (`Vidkodas`, `Vardas`, `Pavarde`, `Slapyvardis`, `Slaptazodis`, `Elektroninis_pastas`, `Komentaru_kiekis`) VALUES
-('C0000', 'Donaldas', 'Trumpas', 'dontru', 'stud123', 'dontru@ktu.lt', 8),
-('C1111', 'Gustas', 'Germanas', 'gusger', 'stud123', 'gusger@ktu.lt', 0),
-('C2222', 'Arnas', 'Belauskas', 'arnbel', 'stud123', 'arnbel@ktu.lt', 2),
-('C3333', 'Tomas', 'Girdzius', 'tomgir', 'stud123', 'tomgir@ktu.lt', 10),
-('C4444', 'Dalius', 'Deldzius', 'daldel', 'stud123', 'daldel@ktu.lt', 4),
+('C0000', 'Donaldas', 'Trumpas', 'dontru', 'stud123', 'dontru@ktu.lt', 3),
+('C1111', 'Gustas', 'Germanas', 'gusger', 'stud123', 'gusger@ktu.lt', 3),
+('C2222', 'Arnas', 'Belauskas', 'arnbel', 'stud123', 'arnbel@ktu.lt', 3),
+('C3333', 'Tomas', 'Girdzius', 'tomgir', 'stud123', 'tomgir@ktu.lt', 3),
+('C4444', 'Dalius', 'Deldzius', 'daldel', 'stud123', 'daldel@ktu.lt', 3),
 ('C5555', 'Egis', 'Bielius', 'egibie', 'stud123', 'egibie@ktu.lt', 3),
-('C6666', 'Arnas', 'Radzius', 'arnrad', 'stud123', 'arnrad@ktu.lt', 2),
-('C7777', 'Simas', 'Ruokis', 'simruo', 'stud123', 'simruo@ktu.lt', 15),
-('C8888', 'Inga', 'Lazauskiene', 'inglaz', 'stud123', 'inglaz@ktu.lt', 9),
-('C9999', 'Romas', 'Kalanta', 'romkal', 'stud123', 'romkal@ktu.lt', 20);
+('C6666', 'Arnas', 'Radzius', 'arnrad', 'stud123', 'arnrad@ktu.lt', 3),
+('C7777', 'Simas', 'Ruokis', 'simruo', 'stud123', 'simruo@ktu.lt', 3),
+('C8888', 'Inga', 'Lazauskiene', 'inglaz', 'stud123', 'inglaz@ktu.lt', 3),
+('C9999', 'Romas', 'Kalanta', 'romkal', 'stud123', 'romkal@ktu.lt', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Sukurta duomenų struktūra lentelei `upvote`
+--
+
+CREATE TABLE `upvote` (
+  `Up_id` int(255) NOT NULL,
+  `Modulis_id` varchar(255) NOT NULL,
+  `Komentaras_id` int(255) NOT NULL,
+  `Studentas_id` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Sukurta duomenų kopija lentelei `upvote`
+--
+
+INSERT INTO `upvote` (`Up_id`, `Modulis_id`, `Komentaras_id`, `Studentas_id`) VALUES
+(216, 'P175B100', 1274, 'C1111'),
+(217, 'P175B100', 1275, 'C2222'),
+(218, 'P175B117', 1276, 'C2222'),
+(219, 'P175B118', 1277, 'C3333'),
+(222, 'P175B505', 1278, 'C3333'),
+(224, 'T120B196', 1279, 'C3333'),
+(226, 'P175B100', 1275, 'C7777'),
+(230, 'P175B118', 1277, 'C7777'),
+(231, 'P175B505', 1278, 'C7777'),
+(281, 'T120B196', 1285, 'C0000'),
+(287, 'P130B001', 1269, 'C2222'),
+(288, 'P175B117', 1276, 'C0000'),
+(290, 'P175B505', 1278, 'C0000'),
+(291, 'P175B100', 1275, 'C0000'),
+(292, 'P175B118', 1277, 'C0000'),
+(293, 'P130B001', 1269, 'C0000');
 
 --
 -- Indexes for dumped tables
@@ -258,13 +351,36 @@ ALTER TABLE `moduliai`
 -- Indexes for table `modulio_komentaras`
 --
 ALTER TABLE `modulio_komentaras`
-  ADD PRIMARY KEY (`Komentaro_id`,`Modulio_id`);
+  ADD PRIMARY KEY (`Komentaro_id`,`Modulio_id`) USING BTREE,
+  ADD KEY `Studento_id` (`Studento_id`) USING BTREE;
 
 --
 -- Indexes for table `student_login`
 --
 ALTER TABLE `student_login`
   ADD PRIMARY KEY (`Vidkodas`);
+
+--
+-- Indexes for table `upvote`
+--
+ALTER TABLE `upvote`
+  ADD PRIMARY KEY (`Up_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `modulio_komentaras`
+--
+ALTER TABLE `modulio_komentaras`
+  MODIFY `Komentaro_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1293;
+
+--
+-- AUTO_INCREMENT for table `upvote`
+--
+ALTER TABLE `upvote`
+  MODIFY `Up_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=294;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

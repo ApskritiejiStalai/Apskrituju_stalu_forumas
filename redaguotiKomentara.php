@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <?php
-    date_default_timezone_set('Europe/Moscow');
-    session_start();
-    if(!isset($_SESSION['logged']) || $_SESSION['user'] != "admin"){
-        header("Location: index.php");
-        die();
-    }
-    include('Control/login.control.php');
-    include('Control/edit.control.php');
+date_default_timezone_set('Europe/Moscow');
+session_start();
+if (!isset($_SESSION['logged']) || $_SESSION['user'] != "admin") {
+    header("Location: index.php");
+    die();
+}
+include('Control/login.control.php');
+include('Control/edit.control.php');
+
 ?>
 <html lang="en">
     <head>
@@ -25,7 +26,14 @@
     </head>
     <body>
         <header>
-
+<!--//---------------------------------------------------->
+            <!--reik padaryt graziai username ir kazkur imest kad nesuvarytu ten virsaus-->
+           <?php  if(isset($_SESSION['name'])) {
+                    echo $_SESSION['user'];
+                    echo $_SESSION['name'];
+                    } 
+           ?>
+          <!---------------------------------------------------------------->  
             <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
                 <div class="pullRight">
                     <form action="" method="post">
@@ -40,11 +48,11 @@
                 <div class="logo">
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
                 </div>
-                
+
                 <div class="menu">
                     <ul>
                         <li><a href="index.php">Pagrindinis</a></li>
-                        <li><a href="moduliai.php">Moduliai</a></li>
+                        <li><a href="semestrai.php">Semestrai</a></li>
                         <!--<li><a href="komentarai.php" class="active">Komentarai</a></li>-->
                     </ul>
                 </div>
@@ -56,11 +64,17 @@
                 <h1><?php echo $_GET['id']; ?> <?php echo $_GET['name']; ?></h1>  
             </div>
         </div>
-        
-        <?php if(isset($_GET['comment'])) { ?>
-        
-        <div>
-            <section class="four-elements">
+        <!--//-----bruksniukais padaryt kelia iki sito failo kaip db labore: pradzia > failas1 > failas2 > dabartinis----------------------------------------->
+
+        <a href='index.php'>Pradžia</a>
+        <a href='semestrai.php'>Semestrai</a>
+        <a href='semestroModuliai.php?semester=<?php echo $_GET['semester']; ?>'>Moduliai</a>
+        <a href='komentarai.php?semester=<?php echo $_GET['semester']; ?>&id=<?php echo $_GET['id']; ?>&name=<?php echo $_GET['name']; ?>'>Komentarai</a>
+        <!--//--------------------------------->
+        <?php if (isset($_GET['comment'])) { ?>
+
+            <div>
+                <section class="four-elements">
                     <div class="container" style="width: 45%">
                         <form action="" method="POST">
                             <table class="tcomments">
@@ -68,19 +82,19 @@
                                     <th>Komentaro redagavimas</th>
                                     <th></th>
                                 </tr>
-                                <?php  foreach($newComment as $key=>$val){ ?>
-                                <tr>
-                                        <td> <textarea id="komentaras" name="komentaras" rows="2" cols="75" required><?php if(!isset($_POST['redaguoti'])) echo $val['Komentaras']; ?></textarea> </td>
+                                <?php foreach ($newComment as $key => $val) { ?>
+                                    <tr>
+                                        <td> <textarea id="komentaras" name="komentaras" rows="2" cols="75" required><?php if (!isset($_POST['redaguoti'])) echo $val['Komentaras']; ?></textarea> </td>
                                         <td style="padding-top:0px;"><button type="submit" name="redaguoti" style="size: 100px;">Pateikti</button> </td>
                                         <td style="padding-top:0px;"><button type="submit" name="istrinti" style="size: 100px;">Ištrinti</button> </td>
-                                </tr>
+                                    </tr>
                                 <?php } ?>
                             </table>
                         </form>
                     </div>
-            </section>
-        </div>
-        
+                </section>
+            </div>
+
         <?php } ?>
         <footer>
             <div class="container">
@@ -114,6 +128,6 @@
         <script src="js/vendor/isotope.pkgd.min.js"></script>
         <script src="js/vendor/odometer.min.js"></script>
         <script src="js/main.js"></script>
-        
+
     </body>
 </html>

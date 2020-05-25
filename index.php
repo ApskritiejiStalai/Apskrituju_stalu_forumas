@@ -3,6 +3,7 @@
 session_start();
 include('Control/login.control.php');
 include('Control/admin.control.php');
+
 ?>
 <html lang="en">
     <head>
@@ -21,8 +22,12 @@ include('Control/admin.control.php');
     <body>
         <header>
             <!--//---------------------------------------------------->
-            <!--reik padaryt graziai username kazkur-->
-           <?php  if(isset($_SESSION['name'])) echo $_SESSION['name']; ?>
+            <!--reik padaryt graziai username ir kazkur imest kad nesuvarytu ten virsaus-->
+           <?php  if(isset($_SESSION['name'])) {
+                    echo $_SESSION['user'];
+                    echo $_SESSION['name'];
+                    } 
+           ?>
           <!---------------------------------------------------------------->  
           
             <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
@@ -56,8 +61,8 @@ include('Control/admin.control.php');
                                     <?php if($newComments != false) 
                                             foreach($newComments as $key=>$val) { ?>
                                     <tr>
-                                        <td> <a href="redaguotiKomentara.php?id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Modulio_id']; ?></td>
-                                        <td> <a href="redaguotiKomentara.php?id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Data']; ?></td>
+                                        <td> <a href="redaguotiKomentara.php?semester=<?php echo $val['Semestras']; ?>&id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Modulio_id']; ?></td>
+                                        <td> <a href="redaguotiKomentara.php?semester=<?php echo $val['Semestras']; ?>&id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Data']; ?></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
@@ -112,7 +117,7 @@ include('Control/admin.control.php');
                 <div class="menu">
                     <ul>
                         <li><a href="index.php" class="active">Pagrindinis</a></li>
-                        <li><a href="moduliai.php">Moduliai</a></li>
+                        <li><a href="semestrai.php">Semestrai</a></li>
                         <!--<li><a href="komentarai.php">Komentarai</a></li>-->
                     </ul>
                 </div>
@@ -131,7 +136,7 @@ include('Control/admin.control.php');
                             <span class="dot-dash">.</span>
                             <p>Forumas skirtas KTU bendruomenės nariams išreikšti nuomonę apie modulius ir dėstytojus</p>
                             <div class="slider-buttons">
-                                <a href="moduliai.php" class="button">Pradėti diskusiją</a>
+                                <a href="semestrai.php" class="button">Pradėti diskusiją</a>
                             </div>
                         </div>
                     </div>
@@ -159,7 +164,7 @@ include('Control/admin.control.php');
                                 joms geriausio sprendimo būdo.
                             </p>
 
-                            <a href="about.html" class="button">Gal bus mygtukas į dokumentus/įgyvendintus planus</a>
+                            <a href="darbai.php" class="button">Atlikti darbai</a>
                         </div>
                     </div>
                 </div>

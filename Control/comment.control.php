@@ -1,4 +1,5 @@
 <?php
+
 //Upvote ideda i duomenu baze
 if (isset($_POST['modulis']) && isset($_POST['komentaras'])) {
     include 'http_build_url.control.php';
@@ -12,13 +13,19 @@ if (isset($_POST['modulis']) && isset($_POST['komentaras'])) {
     include 'Model/comment.php';
 
     $commentObj = new comment();
-    
+
     $module_id = $_GET['id'];
-    
+
     //Ideda komentara i duomenu baze
     if (isset($_POST['komentuoti'])) {
-        $commentObj->InsertComment($module_id, $_POST['komentaras']);
-        header("Refresh:0");
+        $existing = $commentObj->CheckIfExists($_POST['komentaras']);
+
+        if ($existing) {
+            header('Location: http://' . $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI] . '&exist=true');
+        } else {
+            $commentObj->InsertComment($module_id, $_POST['komentaras']);
+            header("Refresh:0");
+        }
     }
 
     $commentExists = $commentObj->commentExist($module_id); //tikrinama ar parase komentara studentas
@@ -28,9 +35,47 @@ if (isset($_POST['modulis']) && isset($_POST['komentaras'])) {
     $myComment = $commentObj->getComment($module_id); //pasiimu savo palaikinta komentara
     //puslapiu numeravimas
 
-    $page = 1;
-    $limit = 7; //viename puslapyje irasu skaicius
-    $rows = $commentObj->ElementsCount($_GET['id']); //kiek bus irasu vaizduojama
+    $data = $commentObj->TakeComment($_GET['id']); //paimami irasai
+    $dataTransfered; //atfiltruoti irasai kad nesikartotu palaikinti keli
+    if ($data != false) {
+        $prev = null;
+        $rodyti = true;
+        $pirmas = true;
+        $countOfNewData = 0;
+
+        for ($i = 0; $i < sizeof($data); $i++) {
+
+            if ($upvoteExists != null) {
+                if (($myComment == $prev && $_SESSION['id'] == $data[$i]['laikintojas']) ||
+                        ($pirmas && $_SESSION['id'] == $data[$i]['laikintojas']) ||
+                        ($myComment == $data[$i]['Komentaras'] && $_SESSION['id'] == $data[$i]['laikintojas'])) {
+
+                    $dataTransfered[$countOfNewData++] = $data[$i];
+                } else if ($data[$i]['Komentaras'] != $prev && $data[$i]['Komentaras'] != $myComment) {
+
+                    $dataTransfered[$countOfNewData++] = $data[$i];
+                }
+            } else {
+                if ($data[$i]['Komentaras'] != $prev && $data[$i]['Komentaras'] != $myComment) {
+
+                    $dataTransfered[$countOfNewData++] = $data[$i];
+                }
+            }
+
+            $prev = $data[$i]['Komentaras'];
+            $pirmas = false;
+        }
+
+        $data = $dataTransfered;
+        unset($dataTransfered);
+    }
+    $page = 1; //puslapio numeris
+    $limit = 3; //viename puslapyje irasu skaicius
+    if ($data != false) {
+        $rows = sizeof($data); //kiek is viso irasu per puslapius turi but
+    } else
+        $rows = 0;
+    
     $pages = ceil($rows / $limit); //kiek bus puslapiu
 
     if (isset($_GET['page'])) {
@@ -42,14 +87,15 @@ if (isset($_POST['modulis']) && isset($_POST['komentaras'])) {
     //jei nurodytas per didelis numeris, metamas i paskutini puslapi
     if ($page > $pages) {
         $page = $pages;
-    //gaunamas atsiustas naujas puslapio numeris
+        //gaunamas atsiustas naujas puslapio numeris
     }if ($page < 1) {
         $page = 1;
     }
 
     $offset = ($page - 1) * $limit;
 
-    $data = $commentObj->TakeComment($_GET['id']/*, $offset, $limit*/); //paimami irasai
+    $end = $offset + $limit;
+
     //pakeicia url su naujo puslapio numeriu
     $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $parts = parse_url($url) + array('query' => array());
@@ -58,35 +104,6 @@ if (isset($_POST['modulis']) && isset($_POST['komentaras'])) {
     $parts['query'] = http_build_query($query);
     $newUrl = http_build_url($parts);
 }
-
-/*$data = $commentObj->TakeComment($_GET['id']); //paimami irasai
-$prev = null;
-$rodyti = false;
-$pirmas = true;
-$test_array = array();
-$i = 0;
-foreach($data as $key => $val){
-    if($upvoteExists != null){
-    if( ($myComment == $prev && $_SESSION['id'] == $val['laikintojas']) ||
-        ($pirmas && $_SESSION['id'] == $val['laikintojas']) ||
-        ($myComment == $val['Komentaras'] && $_SESSION['id'] == $val['laikintojas'])){
-            $rodyti = true;
-    }
-    else if($val['Komentaras'] != $prev && $val['Komentaras'] != $myComment){
-        $rodyti = true;
-    }
-    }
-    else{
-        if($val['Komentaras'] != $prev && $val['Komentaras'] != $myComment){
-            $rodyti = true;
-        }
-    }
-
-    $prev = $val['Komentaras'];
-    $pirmas = false;
-    $rodyti = false;
-}*/
-
 ?>
 
 

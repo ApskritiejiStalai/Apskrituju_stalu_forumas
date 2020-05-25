@@ -2,7 +2,7 @@
     //loginu metodu kontroliavimas
 
     include 'Model/login.php';
-    
+    include 'Control/http_build_url.control.php';
     if(isset($_POST['logout'])){
         session_unset();
         session_destroy();
