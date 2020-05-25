@@ -27,12 +27,13 @@ include('Control/comment.control.php');
         <header>
             <!--//---------------------------------------------------->
             <!--reik padaryt graziai username ir kazkur imest kad nesuvarytu ten virsaus-->
-           <?php  if(isset($_SESSION['name'])) {
-                    echo $_SESSION['user'];
-                    echo $_SESSION['name'];
-                    } 
-           ?>
-          <!---------------------------------------------------------------->  
+            <?php
+            if (isset($_SESSION['name'])) {
+                echo $_SESSION['user'];
+                echo $_SESSION['name'];
+            }
+            ?>
+            <!---------------------------------------------------------------->  
             <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
                 <div class="pullRight">
                     <form action="" method="post">
@@ -65,12 +66,13 @@ include('Control/comment.control.php');
                 <h1><?php echo $_GET['id']; ?> <?php echo $_GET['name']; ?></h1>  
             </div>
         </div>
-         <!--//-----bruksniukais padaryt kelia iki sito failo kaip db labore: pradzia > failas1 > failas2 > dabartinis----------------------------------------->
-
-        <a href='index.php'>Pradžia</a>
-        <a href='semestrai.php'>Semestrai</a>
-        <a href='semestroModuliai.php?semester=<?php echo $_GET['semester']; ?>'>Moduliai</a>
-        <a href='komentarai.php?semester=<?php echo $_GET['semester']; ?>&id=<?php echo $_GET['id']; ?>&name=<?php echo $_GET['name']; ?>'>Komentarai</a>
+        <!--//-----bruksniukais padaryt kelia iki sito failo kaip db labore: pradzia > failas1 > failas2 > dabartinis----------------------------------------->
+        <div class="pagePath">
+            <li><a href='index.php'>Pradžia</a></li>
+            <li><a href='semestrai.php'>Semestrai</a></li>
+            <li><a href='semestroModuliai.php?semester=<?php echo $_GET['semester']; ?>'>Moduliai</a></li>
+            <li><a href='komentarai.php?semester=<?php echo $_GET['semester']; ?>&id=<?php echo $_GET['id']; ?>&name=<?php echo $_GET['name']; ?>'>Komentarai</a></li>
+        </div>
         <!--//--------------------------------->
         <?php if (isset($_GET['comment'])) { ?>
 
@@ -116,11 +118,11 @@ include('Control/comment.control.php');
                         <?php } else { ?>
                             <table class="tcomments">
                                 <tr>
-                                    <?php if ($_SESSION['user'] == "student") { ?> <th>Komentuoti galima tik vieną kartą</th> <?php } else if ($_SESSION['user'] == "admin" && $data == false) { ?>  <th>Komentarų nėra</th> <?php } ?>
+                                    <?php if ($_SESSION['user'] == "student") { ?> <th style="color: red" >Komentuoti galima tik vieną kartą</th> <?php } else if ($_SESSION['user'] == "admin" && $data == false) { ?>  <th>Komentarų nėra</th> <?php } ?>
                                     <th></th>
                                 </tr>
                             <?php } ?>
-                            <br><br>
+                            <!--                            <br><br>-->
                             <?php
                             if ($data != false) {
                                 ?>
@@ -135,7 +137,6 @@ include('Control/comment.control.php');
                                         if ($i >= $end) {
                                             break;
                                         }
-                                    
                                         ?>
                                         <tr>
                                             <td><button onclick="upvote('<?php echo $upvoteExists; ?>', '<?php echo $_GET['id']; ?>', '<?php echo $data[$i]['id']; ?>')" style="display: inline-block; min-width: 0;padding: none;border: none;text-align: center;font:none;background: none; color: gray; margin: 0;
@@ -151,11 +152,30 @@ include('Control/comment.control.php');
                                 ?>
                             </table> 
                     </div>
-                    <?php if ($page > 1) { ?> <a href=<?php $newUrl1 = str_replace("&page=" . $page, "&page=" . 1, $newUrl); echo $newUrl1; ?>>Pirmas</a><?php } ?>
-                    <?php if ($page > 1) { ?> <a href="<?php $newUrl2 = str_replace("&page=" . $page, "&page=" . ($page - 1), $newUrl);  echo $newUrl2; ?>">Atgal</a><?php } ?>
-                    <?php if ($pages > 1) echo $page . " puslapis"; ?>
-                    <?php if ($page < $pages) { ?> <a href="<?php $newUrl3 = str_replace("&page=" . $page, "&page=" . ($page + 1), $newUrl); echo $newUrl3; ?>">Kitas</a> <?php } ?>
-                     <?php if ($page < $pages) { ?> <a href=<?php $newUrl4 = str_replace("&page=" . $page, "&page=" . $pages, $newUrl);  echo $newUrl4; ?>>Paskutinis</a> <?php } ?>
+                    <div class="pages">
+                        <?php if ($page > 1) { ?> <a href=<?php
+                            $newUrl1 = str_replace("&page=" . $page, "&page=" . 1, $newUrl);
+                            echo $newUrl1;
+                            ?>><i class="fa fa-fast-backward" aria-hidden="true"></i></a><?php } ?>
+                            &nbsp;&nbsp;
+                        <?php if ($page > 1) { ?> <a href="<?php
+                            $newUrl2 = str_replace("&page=" . $page, "&page=" . ($page - 1), $newUrl);
+                            echo $newUrl2;
+                            ?>"><i class="fa fa-step-backward" aria-hidden="true"></i></a><?php } ?>
+                            &nbsp;&nbsp;
+                           <?php if ($pages > 1) echo $page . " puslapis"; ?>
+                           &nbsp;&nbsp;
+                        <?php if ($page < $pages) { ?> <a href="<?php
+                            $newUrl3 = str_replace("&page=" . $page, "&page=" . ($page + 1), $newUrl);
+                            echo $newUrl3;
+                            ?>"><i class="fa fa-step-forward" aria-hidden="true"></i></a> 
+                           <?php } ?>
+                           &nbsp;&nbsp;
+                        <?php if ($page < $pages) { ?> <a href=<?php
+                            $newUrl4 = str_replace("&page=" . $page, "&page=" . $pages, $newUrl);
+                            echo $newUrl4;
+                            ?>><i class="fa fa-fast-forward" aria-hidden="true"></i></a> <?php } ?>
+                    </div>
                 </section>
             </div>
 
@@ -174,7 +194,7 @@ include('Control/comment.control.php');
                     }, 1000)
                 }
             </script>
-<?php } ?>
+        <?php } ?>
         <footer>
             <div class="container">
                 <div class="row">

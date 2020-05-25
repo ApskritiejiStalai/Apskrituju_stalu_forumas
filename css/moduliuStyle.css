@@ -40,6 +40,13 @@
 }
 .tcomments {
 	height: auto;
+	margin: 2px;
+	padding-top: 10px;
+	/*height: 50px;*/
+	display: flex;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
 }
 	.tcomments th {
 		padding: 5px;
@@ -54,4 +61,15 @@
 		align-items: center;
 		text-align:center;
 	}
+
+.pages {
+	height: auto;
+	margin: 2px;
+	padding-top: 10px;
+	/*height: 50px;*/
+	display: flex;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
+}
 

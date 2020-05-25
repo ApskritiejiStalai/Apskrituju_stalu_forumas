@@ -3,7 +3,6 @@
 session_start();
 include('Control/login.control.php');
 include('Control/admin.control.php');
-
 ?>
 <html lang="en">
     <head>
@@ -23,28 +22,37 @@ include('Control/admin.control.php');
         <header>
             <!--//---------------------------------------------------->
             <!--reik padaryt graziai username ir kazkur imest kad nesuvarytu ten virsaus-->
-           <?php  if(isset($_SESSION['name'])) {
-                    echo $_SESSION['user'];
-                    echo $_SESSION['name'];
-                    } 
-           ?>
-          <!---------------------------------------------------------------->  
-          
-            <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
+          <!--            <i style="padding-left: 1350px; color: #3c88e7;" class="fa fa-user" aria-hidden="true">
+            //<?php
+// if(isset($_SESSION['name'])) {
+//                    echo $_SESSION['user'];
+//                    echo $_SESSION['name'];
+//                    } 
+//           
+?>
+</i>-->
+
+            <!---------------------------------------------------------------->  
+
+<?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
                 <div class="pullRight">
                     <form action="" method="post">
                         <button  style="width:auto; margin-top: 30px;" type="logout" name="logout">Atsijungti</button>
                     </form>
                 </div>
-            <?php } ?>
+<?php } ?>
+
+
 
             <div class="pullLeft">
-                
-                <button <?php if(!isset($_SESSION['user']) || $_SESSION['user'] != "admin") { ?> style='display: none;' <?php } ?> onclick="document.getElementById('noti').style.display = 'block'" style="width:auto; border-radius: 30px; margin-top: 30px;">
+
+
+
+                <button <?php if (!isset($_SESSION['user']) || $_SESSION['user'] != "admin") { ?> style='display: none;' <?php } ?> onclick="document.getElementById('noti').style.display = 'block'" style="width:auto; border-radius: 30px; margin-top: 30px;">
                     <i class="fa fa-bell"></i>
-                    <?php if($newComments != false) { ?> <span class="noti"></span> <?php } ?>
+<?php if ($newComments != false) { ?> <span class="noti"></span> <?php } ?>
                 </button>
-                
+
                 <div id="noti" class="modal">
                     <form class="modal-content animate" action="?login" method="post">
                         <span onclick="document.getElementById('noti').style.display = 'none'" class="close" title="Close Modal">&times;</span>
@@ -58,22 +66,26 @@ include('Control/admin.control.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if($newComments != false) 
-                                            foreach($newComments as $key=>$val) { ?>
-                                    <tr>
-                                        <td> <a href="redaguotiKomentara.php?semester=<?php echo $val['Semestras']; ?>&id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Modulio_id']; ?></td>
-                                        <td> <a href="redaguotiKomentara.php?semester=<?php echo $val['Semestras']; ?>&id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Data']; ?></td>
-                                    </tr>
-                                    <?php } ?>
+                                    <?php if ($newComments != false)
+                                        foreach ($newComments as $key => $val) {
+                                            ?>
+                                            <tr>
+                                                <td> <a href="redaguotiKomentara.php?semester=<?php echo $val['Semestras']; ?>&id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Modulio_id']; ?></td>
+                                                <td> <a href="redaguotiKomentara.php?semester=<?php echo $val['Semestras']; ?>&id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Data']; ?></td>
+                                            </tr>
+    <?php } ?>
                                 </tbody>
                             </table>
 
                         </div>
                     </form>
-                </div>                 
+                </div>  
+
             </div>
 
-            <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] != true || !isset($_SESSION['logged'])) { ?>
+
+
+<?php if (isset($_SESSION['logged']) && $_SESSION['logged'] != true || !isset($_SESSION['logged'])) { ?>
                 <div class="pullRight">
                     <button onclick="document.getElementById('id01').style.display = 'block'" style="width:auto; margin-top: 30px;">Prisijungti</button>
                     <div id="id01" class="modal">
@@ -107,6 +119,7 @@ include('Control/admin.control.php');
                 </script>
             <?php } ?>  
             <div class="container">
+
                 <div class="logo">
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
                 </div>
@@ -122,6 +135,15 @@ include('Control/admin.control.php');
                     </ul>
                 </div>
                 <div class="mobile-menu"><i class="fa fa-bars"></i></div>
+            </div>
+            <div class="logas"> 
+                <i class="fa fa-user" aria-hidden="true">
+                    <?php
+                    if (isset($_SESSION['name'])) {
+                        echo $_SESSION['user'];
+                        echo $_SESSION['name'];
+                    }
+                    ?></i>
             </div>
         </header>
 

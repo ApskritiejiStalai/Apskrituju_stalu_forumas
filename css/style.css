@@ -42,10 +42,11 @@
 .search {
     font-family: sans-serif;
     width:100%;    
-    padding-top:30px;
+    /*padding-top:30px;
     padding-bottom: 1px;
     padding-left: 100px;
-    padding-right: 5px;
+    padding-right: 5px;*/
+ 
 }
 input{
     border:3px solid #0094ff;
@@ -54,9 +55,19 @@ input{
     border-radius:50px;
     padding:0px 10px;
 }
+*:focus {
+    outline: none;
+}
 .box {
     width: 100%;
     text-align: center;
+    margin: 2px;
+    padding-top: 10px;
+    /*height: 50px;*/
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
 }
 
 

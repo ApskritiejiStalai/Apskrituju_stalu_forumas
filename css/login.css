@@ -1,3 +1,37 @@
+.pagePath {
+    /*margin: 10px 0px 10px 0px;
+    display: inline-block;
+    float: left;
+    padding-left:100px;*/
+    margin: 2px;
+    padding-top:20px;
+    /*height: 50px;*/
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+    .pagePath li {
+        float: left;
+        display: block;
+        margin-right: 5px;
+        background:  url(page-path-separator.png) center right no-repeat;
+        padding-right: 15px;
+    }
+
+        .pagePath li:last-child {
+            background: none;
+        }
+
+.logas {
+    float: right;
+    display: inline-block;
+    padding-right: 50px;
+    color: #3c88e7;
+    padding-top: 0px;
+}
+
 .pullRight {
     float: right;
     display: inline-block;
@@ -49,6 +83,7 @@ button {
     text-transform: uppercase;
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /*outline: none;*/
     /*margin-top: 30px;*/
 }
 
@@ -56,14 +91,19 @@ button-w {
     background: none;
     border-color: #ffffff;
     margin: 0;
+    /*outline: none;*/
 }
 
 button:hover {
     background: transparent;
     color: #3c88e7;
     border-color: #3c88e7;
+    /*outline: none;*/
 }
 
+* {
+    outline: none;
+}
 
 
 .container2 {

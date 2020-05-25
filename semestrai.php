@@ -10,7 +10,7 @@ include 'Control/http_build_url.control.php';
 ?>
 <html lang="lt">
     <head>
-        <title>ASF MODULIAI</title>
+        <title>ASF SEMESTRAI</title>
         <link rel="icon" href="assets/img/icon.png">
         <meta charset="utf-8" />
         <!--<link rel="icon" href="favicon.png" type="image/x-icon" />-->
@@ -25,7 +25,7 @@ include 'Control/http_build_url.control.php';
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-            
+
         <header>
             <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
                 <div class="pullRight"> 
@@ -47,28 +47,44 @@ include 'Control/http_build_url.control.php';
                 </div>
                 <div class="mobile-menu"><i class="fa fa-bars"></i></div>
             </div>
-        </header>
-        
-        <!--//---------------------------------------------------->
+
+            <!--//---------------------------------------------------->
             <!--reik padaryt graziai username ir kazkur imest kad nesuvarytu ten virsaus-->
-          <?php  if(isset($_SESSION['name'])) {
-                    echo $_SESSION['user'];
-                    echo $_SESSION['name'];
-                    } 
-           ?>
-          <!---------------------------------------------------------------->  
-          
+            <?php
+            //  if(isset($_SESSION['name'])) {
+//                    echo $_SESSION['user'];
+//                    echo $_SESSION['name'];
+//                    } 
+            ?>
+            <div class="logas"> 
+                <i class="fa fa-user" aria-hidden="true">
+                    <?php
+                    if (isset($_SESSION['name'])) {
+                        echo $_SESSION['user'];
+                        echo $_SESSION['name'];
+                    }
+                    ?></i>
+            </div>
+            <!---------------------------------------------------------------->  
+        </header>
+
+
+
         <div class="intro-page" style="background-image: url('assets/img/backgr.jpg')">
             <div class="container">
                 <h1>Semestrai</h1>
             </div>
         </div>
-          
-          <!--//-----bruksniukais padaryt kelia iki sito failo kaip db labore: pradzia > failas1 > failas2 > dabartinis----------------------------------------->
-        <a href='index.php'>Pradžia</a>
-        <a href='semestrai.php'>Semestrai</a>
+
+        <!--//-----bruksniukais padaryt kelia iki sito failo kaip db labore: pradzia > failas1 > failas2 > dabartinis----------------------------------------->
+        <!--        <a href='index.php'>Pradžia</a>
+                <a href='semestrai.php'>Semestrai</a>-->
+        <ul class="pagePath">
+            <li><a href='index.php'>Pradžia</a></li>
+            <li><a href='semestrai.php'>Semestrai</a></li>
+        </ul>
         <!--//--------------------------------->
-        
+
         <section class="four-elements">
             <div class="container">
                 <div>
