@@ -25,25 +25,7 @@ include('Control/comment.control.php');
     </head>
     <body>
         <header>
-            <!--//---------------------------------------------------->
-            <!--reik padaryt graziai username ir kazkur imest kad nesuvarytu ten virsaus-->
-            <?php
-            if (isset($_SESSION['name'])) {
-                echo "<br>";
-                echo $_SESSION['user'];
-                echo "<br>";
-                echo $_SESSION['name'];
-            }
-            ?>
-            <!---------------------------------------------------------------->  
-            <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
-                <div class="pullRight">
-                    <form action="" method="post">
-                        <button  style="width:auto; margin-top: 30px;" type="logout" name="logout">Atsijungti</button>
-                    </form>
-                </div>
-            <?php } ?>
-
+          
             <?php if (isset($_SESSION['exists']) && $_SESSION['exists'] == true) { unset($_SESSION['exists']);?>
                 <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                 <script type="text/javascript">
@@ -57,16 +39,36 @@ include('Control/comment.control.php');
                 </script>
             <?php } ?>
 
-            <div class="container">
+            <div class="containerH">
                 <div class="logo">
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
                 </div>
 
                 <div class="menu">
                     <ul>
-                        <li><a href="index.php">Pagrindinis</a></li>
-                        <li><a href="semestrai.php">Semestrai</a></li>
-                        <!--<li><a href="komentarai.php" class="active">Komentarai</a></li>-->
+                        <li><a style="margin-top: 17px;" href="index.php">Pagrindinis</a></li>
+                        <li><a style="margin-top: 17px;" href="semestrai.php">Semestrai</a></li>
+                        <li>&nbsp;</li>
+                        <ui style="float: left; margin-top: 15px;" class="logas pull-right">
+                            <a  class="fa fa-user" aria-hidden="true">
+                                <?php
+                                if (isset($_SESSION['name'])) {
+                                    echo $_SESSION['user'];
+                                    echo "<br>";
+                                    echo "&nbsp;&nbsp;&nbsp;&nbsp;";
+                                    echo $_SESSION['name'];
+                                }
+                                ?>
+                            </a>
+                        </ui>
+                        <li><?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
+                                <div class="pullRight">
+                                    <form action="" method="post">
+                                        <button  style="width:auto; " type="logout" name="logout">Atsijungti</button>
+                                    </form>
+                                </div>
+                            <?php } ?>
+                        </li>
                     </ul>
                 </div>
                 <div class="mobile-menu"><i class="fa fa-bars"></i></div>
@@ -77,13 +79,12 @@ include('Control/comment.control.php');
                 <h1><?php echo $_GET['id']; ?> <?php echo $_GET['name']; ?></h1>  
             </div>
         </div>
-        <!--//-----bruksniukais padaryt kelia iki sito failo kaip db labore: pradzia > failas1 > failas2 > dabartinis----------------------------------------->
-        <div class="pagePath">
+         <div class="pagePath">
             <li><a href='index.php'>Pradžia</a></li>
             <li><a href='semestrai.php'>Semestrai</a></li>
             <li><a href='semestroModuliai.php?semester=<?php echo $_GET['semester']; ?>'>Moduliai</a></li>
         </div>
-        <!--//--------------------------------->
+        
         <?php if (isset($_GET['comment'])) { ?>
             <div>
                 <section class="four-elements">

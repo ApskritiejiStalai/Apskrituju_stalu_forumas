@@ -5,14 +5,11 @@ session_start();
 include('Control/login.control.php');
 include('Control/edit.control.php');
 if (!isset($_SESSION['logged']) || !isset($_POST['redagavimas'])) {
-    if($_SESSION['user'] != 'admin'){
+    if ($_SESSION['user'] != 'admin') {
         header("Location: index.php");
         die();
     }
 }
-
-
-
 ?>
 <html lang="en">
     <head>
@@ -30,36 +27,37 @@ if (!isset($_SESSION['logged']) || !isset($_POST['redagavimas'])) {
     </head>
     <body>
         <header>
-<!--//---------------------------------------------------->
-            <!--reik padaryt graziai username ir kazkur imest kad nesuvarytu ten virsaus-->
-           <?php  if(isset($_SESSION['name'])) {
-                    echo "<br>";
-                    echo $_SESSION['user'];
-                    echo "<br>";
-                    echo $_SESSION['name'];
-                    } 
-           ?>
-          <!---------------------------------------------------------------->  
-            <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
-                <div class="pullRight">
-                    <form action="" method="post">
-                        <button  style="width:auto; margin-top: 30px;" type="logout" name="logout">Atsijungti</button>
-                    </form>
-                </div>
-            <?php } ?>
 
-
-
-            <div class="container">
+            <div class="containerH">
                 <div class="logo">
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
                 </div>
 
                 <div class="menu">
                     <ul>
-                        <li><a href="index.php">Pagrindinis</a></li>
-                        <li><a href="semestrai.php">Semestrai</a></li>
-                        <!--<li><a href="komentarai.php" class="active">Komentarai</a></li>-->
+                        <li><a style="margin-top: 17px;" href="index.php">Pagrindinis</a></li>
+                        <li><a style="margin-top: 17px;" href="semestrai.php">Semestrai</a></li>
+                        <li>&nbsp;</li>
+                        <ui style="float: left; margin-top: 15px;" class="logas pull-right">
+                            <a  class="fa fa-user" aria-hidden="true">
+                                <?php
+                                if (isset($_SESSION['name'])) {
+                                    echo $_SESSION['user'];
+                                    echo "<br>";
+                                    echo "&nbsp;&nbsp;&nbsp;&nbsp;";
+                                    echo $_SESSION['name'];
+                                }
+                                ?>
+                            </a>
+                        </ui>
+                        <li><?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
+                                <div class="pullRight">
+                                    <form action="" method="post">
+                                        <button  style="width:auto; " type="logout" name="logout">Atsijungti</button>
+                                    </form>
+                                </div>
+                            <?php } ?>
+                        </li>
                     </ul>
                 </div>
                 <div class="mobile-menu"><i class="fa fa-bars"></i></div>
@@ -70,11 +68,14 @@ if (!isset($_SESSION['logged']) || !isset($_POST['redagavimas'])) {
                 <h1><?php echo $_GET['id']; ?> <?php echo $_GET['name']; ?></h1>  
             </div>
         </div>
-        <a href='index.php'>Pradžia</a>
-        <a href='semestrai.php'>Semestrai</a>
-        <a href='semestroModuliai.php?semester=<?php echo $_GET['semester']; ?>'>Moduliai</a>
-        <a href='komentarai.php?semester=<?php echo $_GET['semester']; ?>&id=<?php echo $_GET['id']; ?>&name=<?php echo $_GET['name']; ?>'>Komentarai</a>
-        <?php if (isset($_GET['comment'])) { ?>
+        <div class="pagePath" style="padding-bottom: 0px;">
+            <li><a href='index.php'>Pradžia</a></li>
+            <li><a href='semestrai.php'>Semestrai</a>
+            <li><a href='semestroModuliai.php?semester=<?php echo $_GET['semester']; ?>'>Moduliai</a></li>
+            <li><a href='komentarai.php?semester=<?php echo $_GET['semester']; ?>&id=<?php echo $_GET['id']; ?>&name=<?php echo $_GET['name']; ?>'>Komentarai</a></li>
+        </div>
+        <?php if (isset($_GET['comment'])) {
+            ?>
 
             <div>
                 <section class="four-elements">

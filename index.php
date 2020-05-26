@@ -21,23 +21,10 @@ include('Control/admin.control.php');
     <body>
         <header>
 
-<?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
-                <div class="pullRight">
-                    <form action="" method="post">
-                        <button  style="width:auto; margin-top: 30px;" type="logout" name="logout">Atsijungti</button>
-                    </form>
-                </div>
-<?php } ?>
-
-
-
             <div class="pullLeft">
-
-
-
                 <button <?php if (!isset($_SESSION['user']) || $_SESSION['user'] != "admin") { ?> style='display: none;' <?php } ?> onclick="document.getElementById('noti').style.display = 'block'" style="width:auto; border-radius: 30px; margin-top: 30px;">
                     <i class="fa fa-bell"></i>
-<?php if ($newComments != false) { ?> <span class="noti"></span> <?php } ?>
+                    <?php if ($newComments != false) { ?> <span class="noti"></span> <?php } ?>
                 </button>
 
                 <div id="noti" class="modal">
@@ -47,24 +34,28 @@ include('Control/admin.control.php');
                             <label style="color:#3c88e7;" for="notification"><b><h1>Nauji pranešimai</h1></b></label>
                             <table class="semester">
                                 <?php if ($newComments != false) { ?>
-                                <thead>
-                                    <tr>
-                                        <th>Modulio kodas</th>
-                                        <th>Data</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
+                                    <thead>
+                                        <tr>
+                                            <th>Modulio kodas</th>
+                                            <th>Data</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
                                         <?php foreach ($newComments as $key => $val) {
                                             ?>
                                             <tr>
                                                 <td> <a href="redaguotiKomentara.php?semester=<?php echo $val['Semestras']; ?>&id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Modulio_id']; ?></td>
                                                 <td> <a href="redaguotiKomentara.php?semester=<?php echo $val['Semestras']; ?>&id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Data']; ?></td>
                                             </tr>
-                                    <?php } } else {?>
-                                            <br>
-                                            <label style="color:#3c88e7;" for="notification"><b><h3>Pranešimų nėra</h3></b></label>  
-                                    <?php } ?>
+                                            <?php
+                                        }
+                                    } else {
+                                        ?>
+                                    <br>
+                                    <label style="color:#3c88e7;" for="notification"><b><h3>Pranešimų nėra</h3></b></label>  
+                                <?php }
+                                ?>
                                 </tbody>
                             </table>
 
@@ -76,9 +67,9 @@ include('Control/admin.control.php');
 
 
 
-<?php if (isset($_SESSION['logged']) && $_SESSION['logged'] != true || !isset($_SESSION['logged'])) { ?>
+            <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] != true || !isset($_SESSION['logged'])) { ?>
                 <div class="pullRight">
-                    <button onclick="document.getElementById('id01').style.display = 'block'" style="width:auto; margin-top: 30px;">Prisijungti</button>
+                    <button onclick="document.getElementById('id01').style.display = 'block'" style="width:auto; margin-top: 35px;">Prisijungti</button>
                     <div id="id01" class="modal">
                         <form class="modal-content animate" action="?login" method="post">
                             <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>
@@ -109,35 +100,45 @@ include('Control/admin.control.php');
                                 })
                 </script>
             <?php } ?>  
-            <div class="container">
+            <div class="containerH">
 
-                <div class="logo">
+                <div >
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
                 </div>
 
-
-
-
                 <div class="menu">
                     <ul>
-                        <li><a href="index.php" class="active">Pagrindinis</a></li>
-                        <li><a href="semestrai.php">Semestrai</a></li>
-                        <!--<li><a href="komentarai.php">Komentarai</a></li>-->
+                        <li><a style="margin-top: 17px;" href="index.php" class="active">Pagrindinis</a></li>
+                        <li><a style="margin-top: 17px;" href="semestrai.php">Semestrai</a></li>
+                        <li>&nbsp;</li>
+                        <?php if (isset($_SESSION['name'])) { ?>
+                            <ui style="float: left; margin-top: 15px;" class="logas pull-right">
+                                <a  class="fa fa-user" aria-hidden="true">
+                                    <?php
+                                    if (isset($_SESSION['name'])) {
+                                        echo $_SESSION['user'];
+                                        echo "<br>";
+                                        echo "&nbsp;&nbsp;&nbsp;&nbsp;";
+                                        echo $_SESSION['name'];
+                                    }
+                                    ?>
+                                </a>
+                            </ui>
+                        <?php } ?>
+                        <li><?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
+                                <div class="pullRight">
+                                    <form action="" method="post">
+                                        <button  style="width:auto; " type="logout" name="logout">Atsijungti</button>
+                                    </form>
+                                </div>
+                            <?php } ?>
+                        </li>
                     </ul>
+
                 </div>
                 <div class="mobile-menu"><i class="fa fa-bars"></i></div>
             </div>
-            <?php if (isset($_SESSION['name'])) { ?>
-            <div class="logas"> 
-                <i class="fa fa-user" aria-hidden="true">
-                    <?php
-                        echo "<br>";
-                        echo $_SESSION['user'];
-                        echo "<br>";
-                        echo $_SESSION['name'];
-                    ?></i>
-            </div>
-            <?php } ?>
+
         </header>
 
         <div class="home-slider">

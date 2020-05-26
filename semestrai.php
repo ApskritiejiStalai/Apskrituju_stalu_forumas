@@ -27,37 +27,42 @@ include 'Control/http_build_url.control.php';
     <body>
 
         <header>
-            <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
-                <div class="pullRight"> 
-                    <form action="" method="post">
-                        <button  style="width:auto; margin-top: 30px;" type="logout" name="logout">Atsijungti</button>
-                    </form>
-                </div>
-            <?php } ?>
+            
 
-            <div class="container">
-                <div class="logo">
+            <div class="containerH">
+                <div >
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
                 </div>
                 <div class="menu">
                     <ul>
-                        <li><a href="index.php">Pagrindinis</a></li>
-                        <li><a href="semestrai.php" class="active">Semestrai</a></li>
+                        <li><a style="margin-top: 17px;" href="index.php">Pagrindinis</a></li>
+                        <li><a style="margin-top: 17px;" href="semestrai.php" class="active">Semestrai</a></li>
+                        <li>&nbsp;</li>
+                        <ui style="float: left; margin-top: 15px;" class="logas pull-right">
+                            <a  class="fa fa-user" aria-hidden="true">
+                                <?php
+                                if (isset($_SESSION['name'])) {
+                                    echo $_SESSION['user'];
+                                    echo "<br>";
+                                    echo "&nbsp;&nbsp;&nbsp;&nbsp;";
+                                    echo $_SESSION['name'];
+                                }
+                                ?>
+                            </a>
+                        </ui>
+                        <li><?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
+                                <div class="pullRight">
+                                    <form action="" method="post">
+                                        <button  style="width:auto; " type="logout" name="logout">Atsijungti</button>
+                                    </form>
+                                </div>
+                            <?php } ?>
+                        </li>
                     </ul>
                 </div>
                 <div class="mobile-menu"><i class="fa fa-bars"></i></div>
             </div>
-            <div class="logas"> 
-                <i class="fa fa-user" aria-hidden="true">
-                    <?php
-                    if (isset($_SESSION['name'])) {
-                        echo "<br>";
-                        echo $_SESSION['user'];
-                        echo "<br>";
-                        echo $_SESSION['name'];
-                    }
-                    ?></i>
-            </div>
+            
             <!---------------------------------------------------------------->  
         </header>
 
