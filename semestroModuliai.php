@@ -105,8 +105,8 @@ include('Control/semester.control.php');
         <div class="search box">
             <input type="search" name="box" onkeyup="showResult(this.value)" placeholder="Suraskite modulį, įvesdami pavadinimą arba kodą" />
             <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-            <div id="livesearch" ></div> <?php //sita elementa sutvarkyt reik, cia suggestionai searcho   ?>
         </div>
+        <div style="align-self: center; border: 0;" class="info" id="livesearch" ></div> 
 
         <section class="four-elements">
             <div class="container">
@@ -118,12 +118,13 @@ include('Control/semester.control.php');
                             <th>Kodas</th>
                             <th>Dalyko pavadinimas</th>
                         </tr>
-<?php foreach ($data as $key => $var) { ?>
+                        <?php foreach ($data as $key => $var) {
+                            ?>
                             <tr>
                                 <td> <a href="komentarai.php?semester=<?php echo $_GET['semester']; ?>&id=<?php echo $var['Kodas']; ?>&name=<?php echo $var['Pavadinimas']; ?>" ><?php echo $var['Kodas']; ?> </td>
                                 <td> <a href="komentarai.php?semester=<?php echo $_GET['semester']; ?>&id=<?php echo $var['Kodas']; ?>&name=<?php echo $var['Pavadinimas']; ?>" ><?php echo $var['Pavadinimas']; ?> </td>
                             </tr>
-<?php } ?>
+                        <?php } ?>
                     </table>
                 </div>
             </div>

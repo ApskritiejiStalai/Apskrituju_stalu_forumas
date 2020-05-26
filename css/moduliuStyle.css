@@ -1,3 +1,23 @@
+.info{
+ /*border:3px solid #0094ff;*/
+/*    
+    width:600px;
+    background: white;
+    padding:0px 10px;
+     width: 100%;
+    text-align: center;
+    margin: 2px;
+    padding-top: 10px;
+    height: 50px;
+    display: block;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+  
+    height:40px;
+    width:600px;   
+    padding:0px 10px;*/
+}
 .semester {
 	width: 100%;
 	height: auto;

@@ -44,14 +44,14 @@ include('Control/comment.control.php');
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
                 </div>
 
-                <div class="menu">
+                <div class="menu1">
                     <ul>
                         <li><a style="margin-top: 17px;" href="index.php">Pagrindinis</a></li>
                         <li><a style="margin-top: 17px;" href="semestrai.php">Semestrai</a></li>
                         <li>&nbsp;</li>
-                        <ui style="float: left; margin-top: 15px;" class="logas pull-right">
+                        <ul style="float: left; margin-top: 15px; text-transform: uppercase;" class="logas pull-right">
                             <a  class="fa fa-user" aria-hidden="true">
-                                <?php
+                             <li>   <?php
                                 if (isset($_SESSION['name'])) {
                                     echo $_SESSION['user'];
                                     echo "<br>";
@@ -59,8 +59,9 @@ include('Control/comment.control.php');
                                     echo $_SESSION['name'];
                                 }
                                 ?>
+                                </li>
                             </a>
-                        </ui>
+                        </ul>
                         <li><?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
                                 <div class="pullRight">
                                     <form action="" method="post">
