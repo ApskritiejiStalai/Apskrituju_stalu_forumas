@@ -44,6 +44,16 @@ include('Control/comment.control.php');
 
             <?php if (isset($_GET['exist']) && $_GET['exist'] == true) { ?>
                 cia reikia kad popup ismestu jog toks komentaras jau egzistuoja
+                 <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+                <script type="text/javascript">
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Toks komentaras jau egzistuoja',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                })
+                </script>
             <?php } ?>
 
             <div class="container">
@@ -122,7 +132,7 @@ include('Control/comment.control.php');
                                     <th></th>
                                 </tr>
                             <?php } ?>
-                            <!--                            <br><br>-->
+                                
                             <?php
                             if ($data != false) {
                                 ?>
@@ -141,7 +151,7 @@ include('Control/comment.control.php');
                                         <tr>
                                             <td><button onclick="upvote('<?php echo $upvoteExists; ?>', '<?php echo $_GET['id']; ?>', '<?php echo $data[$i]['id']; ?>')" style="display: inline-block; min-width: 0;padding: none;border: none;text-align: center;font:none;background: none; color: gray; margin: 0;
                                                         border-radius: none;text-transform: none; -webkit-box-shadow: none; box-shadow: none;" <?php if (($_SESSION['user'] == "admin") || ($upvoteExists != 0 && $upvoteExists != $data[$i]['Up_id']) || ($commentExists && $data[$i]['Studento_id'] == $_SESSION['id'])) { ?> disabled <?php } ?> >
-                                                    <i class="fa fa-arrow-circle-up fa-2x" aria-hidden="true" <?php if ($upvoteExists != 0 && $upvoteExists == $data[$i]['Up_id']) { ?> style="color:red; <?php } ?>"><?php echo $data[$i]['Upvote']; ?></i></button></td>
+                                                    <i class="fa fa-arrow-circle-up fa-2x" aria-hidden="true" <?php if ($upvoteExists != 0 && $upvoteExists == $data[$i]['Up_id']) { ?> style="color:red; <?php } ?>">&nbsp;<?php echo $data[$i]['Upvote']; ?></i></button></td>
                                             <td> <textarea readonly id="comments" rows="2" cols="75" <?php if ($commentExists && $data[$i]['Studento_id'] == $_SESSION['id']) { ?> style="border-color:red;" <?php } ?> ><?php echo $data[$i]['Komentaras']; ?></textarea> </td>
                                             <?php if ($_SESSION['user'] == "admin") { ?><td> <form action="" method="POST"><button type="submit" formaction="redaguotiKomentara.php?semester=<?php echo $_GET['semester']; ?>&id=<?php echo $_GET['id']; ?>&name=<?php echo $_GET['name']; ?> &comment=<?php echo $data[$i]['id']; ?> " style="display: inline-block; min-width: 0;padding: none;border: none;text-align: center;font:none;background: none;  color:  <?php if ($data[$i]['Perziureta'] == 0) { ?> red; <?php } else { ?> gray; <?php } ?> margin: 0;
                                                                                            border-radius: none;text-transform: none; -webkit-box-shadow: none; box-shadow: none;"><i class="fa fa-flag" aria-hidden="true"></i></button></form></td> <?php } ?>
