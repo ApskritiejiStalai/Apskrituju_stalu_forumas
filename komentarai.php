@@ -29,7 +29,9 @@ include('Control/comment.control.php');
             <!--reik padaryt graziai username ir kazkur imest kad nesuvarytu ten virsaus-->
             <?php
             if (isset($_SESSION['name'])) {
+                echo "<br>";
                 echo $_SESSION['user'];
+                echo "<br>";
                 echo $_SESSION['name'];
             }
             ?>
@@ -42,17 +44,16 @@ include('Control/comment.control.php');
                 </div>
             <?php } ?>
 
-            <?php if (isset($_GET['exist']) && $_GET['exist'] == true) { ?>
-                cia reikia kad popup ismestu jog toks komentaras jau egzistuoja
-                 <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+            <?php if (isset($_SESSION['exists']) && $_SESSION['exists'] == true) { unset($_SESSION['exists']);?>
+                <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                 <script type="text/javascript">
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: 'Toks komentaras jau egzistuoja',
-                                    showConfirmButton: false,
-                                    timer: 2000
-                                })
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Toks komentaras jau egzistuoja',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
                 </script>
             <?php } ?>
 
@@ -81,11 +82,9 @@ include('Control/comment.control.php');
             <li><a href='index.php'>Pradžia</a></li>
             <li><a href='semestrai.php'>Semestrai</a></li>
             <li><a href='semestroModuliai.php?semester=<?php echo $_GET['semester']; ?>'>Moduliai</a></li>
-            <li><a href='komentarai.php?semester=<?php echo $_GET['semester']; ?>&id=<?php echo $_GET['id']; ?>&name=<?php echo $_GET['name']; ?>'>Komentarai</a></li>
         </div>
         <!--//--------------------------------->
         <?php if (isset($_GET['comment'])) { ?>
-
             <div>
                 <section class="four-elements">
                     <div class="container" style="width: 45%">
@@ -118,12 +117,12 @@ include('Control/comment.control.php');
                                         <th>Jūsų komentaras</th>
                                         <th></th>
                                     </tr>
-                                    <tr>
-                                        <td> <textarea placeholder="Rašykite savo komentarą..." id="komentaras" name="komentaras" rows="2" cols="75" required></textarea> </td>
+                                    <tr>                                  
+                                        <td> <textarea onkeyup="textCounter(this, 'counter', 150);" placeholder="Rašykite savo komentarą..." id="komentaras" name="komentaras" rows="2" cols="75" required></textarea> </td>
                                         <td style="padding-top:0px;"><button type="submit" name="komentuoti" style="size: 100px;">Pateikti</button> </td>
                                     </tr>
-
                                 </table>
+                                Liko simbolių: <input disabled  maxlength="3" size="3" value="150" id="counter">
                             </form>
                         <?php } else { ?>
                             <table class="tcomments">
@@ -132,9 +131,10 @@ include('Control/comment.control.php');
                                     <th></th>
                                 </tr>
                             <?php } ?>
-                                
+
                             <?php
                             if ($data != false) {
+                                $edit = false; //galimybe studentui redaguoti per pirmasias 20min
                                 ?>
                                 <table class="tcomments">
                                     <tr>
@@ -144,6 +144,13 @@ include('Control/comment.control.php');
                                     </tr>
                                     <?php
                                     for ($i = $offset; $i < sizeof($data); $i++) {
+                                        if($i == 0 && $commentExists){
+                                            
+                                            $dateFromComment = $data[$i]['Metai']."-".$data[$i]['Menesis']."-".$data[$i]['Diena']." ".$data[$i]['Laikas'];
+                                            if(strtotime($dateFromComment) + 1200 >= strtotime(date('Y-n-j H:i:s'))){
+                                                $edit = true;
+                                            }
+                                        }
                                         if ($i >= $end) {
                                             break;
                                         }
@@ -153,7 +160,7 @@ include('Control/comment.control.php');
                                                         border-radius: none;text-transform: none; -webkit-box-shadow: none; box-shadow: none;" <?php if (($_SESSION['user'] == "admin") || ($upvoteExists != 0 && $upvoteExists != $data[$i]['Up_id']) || ($commentExists && $data[$i]['Studento_id'] == $_SESSION['id'])) { ?> disabled <?php } ?> >
                                                     <i class="fa fa-arrow-circle-up fa-2x" aria-hidden="true" <?php if ($upvoteExists != 0 && $upvoteExists == $data[$i]['Up_id']) { ?> style="color:red; <?php } ?>">&nbsp;<?php echo $data[$i]['Upvote']; ?></i></button></td>
                                             <td> <textarea readonly id="comments" rows="2" cols="75" <?php if ($commentExists && $data[$i]['Studento_id'] == $_SESSION['id']) { ?> style="border-color:red;" <?php } ?> ><?php echo $data[$i]['Komentaras']; ?></textarea> </td>
-                                            <?php if ($_SESSION['user'] == "admin") { ?><td> <form action="" method="POST"><button type="submit" formaction="redaguotiKomentara.php?semester=<?php echo $_GET['semester']; ?>&id=<?php echo $_GET['id']; ?>&name=<?php echo $_GET['name']; ?> &comment=<?php echo $data[$i]['id']; ?> " style="display: inline-block; min-width: 0;padding: none;border: none;text-align: center;font:none;background: none;  color:  <?php if ($data[$i]['Perziureta'] == 0) { ?> red; <?php } else { ?> gray; <?php } ?> margin: 0;
+                                            <?php if ($_SESSION['user'] == "admin" || ($edit && $data[$i]['Perziureta'] != 1)) { $edit = false; ?><td> <form action="" method="POST"><button type="submit" name="redagavimas" formaction="redaguotiKomentara.php?semester=<?php echo $_GET['semester']; ?>&id=<?php echo $_GET['id']; ?>&name=<?php echo $_GET['name']; ?> &comment=<?php echo $data[$i]['id']; ?> " style="display: inline-block; min-width: 0;padding: none;border: none;text-align: center;font:none;background: none;  color:  <?php if ($data[$i]['Perziureta'] == 0) { ?> red; <?php } else { ?> gray; <?php } ?> margin: 0;
                                                                                            border-radius: none;text-transform: none; -webkit-box-shadow: none; box-shadow: none;"><i class="fa fa-flag" aria-hidden="true"></i></button></form></td> <?php } ?>
                                         </tr>
                                         <?php
@@ -167,20 +174,20 @@ include('Control/comment.control.php');
                             $newUrl1 = str_replace("&page=" . $page, "&page=" . 1, $newUrl);
                             echo $newUrl1;
                             ?>><i class="fa fa-fast-backward" aria-hidden="true"></i></a><?php } ?>
-                            &nbsp;&nbsp;
+                        &nbsp;&nbsp;
                         <?php if ($page > 1) { ?> <a href="<?php
                             $newUrl2 = str_replace("&page=" . $page, "&page=" . ($page - 1), $newUrl);
                             echo $newUrl2;
                             ?>"><i class="fa fa-step-backward" aria-hidden="true"></i></a><?php } ?>
-                            &nbsp;&nbsp;
-                           <?php if ($pages > 1) echo $page . " puslapis"; ?>
-                           &nbsp;&nbsp;
+                        &nbsp;&nbsp;
+                        <?php if ($pages > 1) echo $page . " puslapis"; ?>
+                        &nbsp;&nbsp;
                         <?php if ($page < $pages) { ?> <a href="<?php
                             $newUrl3 = str_replace("&page=" . $page, "&page=" . ($page + 1), $newUrl);
                             echo $newUrl3;
                             ?>"><i class="fa fa-step-forward" aria-hidden="true"></i></a> 
                            <?php } ?>
-                           &nbsp;&nbsp;
+                        &nbsp;&nbsp;
                         <?php if ($page < $pages) { ?> <a href=<?php
                             $newUrl4 = str_replace("&page=" . $page, "&page=" . $pages, $newUrl);
                             echo $newUrl4;
@@ -189,21 +196,7 @@ include('Control/comment.control.php');
                 </section>
             </div>
 
-            <script>
-                function upvote(upvote, modulis, komentaras) {
-                    $(':button').prop('disabled', true);
-                    $.ajax({
-
-                        url: 'Control/comment.control.php',
-                        type: 'post',
-                        data: 'upvote=' + upvote + '&modulis=' + modulis + '&komentaras=' + komentaras
-
-                    });
-                    window.setTimeout(function () {
-                        location.reload()
-                    }, 1000)
-                }
-            </script>
+            
         <?php } ?>
         <footer>
             <div class="container">
@@ -223,7 +216,33 @@ include('Control/comment.control.php');
                 </div>
             </div>
         </footer>
+        <script>
+            function textCounter(field, field2, maxlimit) //simboliu limitas zinutej
+            {
+                var countfield = document.getElementById(field2);
+                if (field.value.length > maxlimit) {
+                    field.value = field.value.substring(0, maxlimit);
+                    return false;
+                } else {
+                    countfield.value = maxlimit - field.value.length;
+                }
+            }
+        </script>
+        <script>
+                function upvote(upvote, modulis, komentaras) { //upvote mygtuko scriptas
+                    $(':button').prop('disabled', true);
+                    $.ajax({
 
+                        url: 'Control/comment.control.php',
+                        type: 'post',
+                        data: 'upvote=' + upvote + '&modulis=' + modulis + '&komentaras=' + komentaras
+
+                    });
+                    window.setTimeout(function () {
+                        location.reload()
+                    }, 1000)
+                }
+            </script>
         <script type="text/javascript">
             window.odometerOptions = {
                 format: '(,ddd)',

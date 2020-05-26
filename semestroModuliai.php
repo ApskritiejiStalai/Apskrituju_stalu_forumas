@@ -56,7 +56,9 @@ include('Control/semester.control.php');
             <!--reik padaryt graziai username ir kazkur imest kad nesuvarytu ten virsaus-->
             <?php
             if (isset($_SESSION['name'])) {
+                echo "<br>";
                 echo $_SESSION['user'];
+                echo "<br>";
                 echo $_SESSION['name'];
             }
             ?>
@@ -94,7 +96,6 @@ include('Control/semester.control.php');
         <ul class="pagePath">
             <li><a href='index.php'>Pradžia</a></li>
             <li><a href='semestrai.php'>Semestrai</a><li>
-            <a href=<?php echo 'semestroModuliai.php?semester=' . $_GET['semester']; ?>>Moduliai</a>
         </ul>
         <!--//--------------------------------->
         <!--<div class="wrapper">-->

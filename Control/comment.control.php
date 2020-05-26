@@ -21,10 +21,13 @@ if (isset($_POST['modulis']) && isset($_POST['komentaras'])) {
         $existing = $commentObj->CheckIfExists($_POST['komentaras']);
 
         if ($existing) {
-            header('Location: http://' . $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI] . '&exist=true');
+            $_SESSION['exists'] = true;
+            header("Refresh:0");
+            die();
         } else {
             $commentObj->InsertComment($module_id, $_POST['komentaras']);
             header("Refresh:0");
+            die();
         }
     }
 
@@ -37,14 +40,14 @@ if (isset($_POST['modulis']) && isset($_POST['komentaras'])) {
 
     $data = $commentObj->TakeComment($_GET['id']); //paimami irasai
     $dataTransfered; //atfiltruoti irasai kad nesikartotu palaikinti keli
+
     if ($data != false) {
         $prev = null;
         $rodyti = true;
         $pirmas = true;
         $countOfNewData = 0;
 
-        for ($i = 0; $i < sizeof($data); $i++) {
-
+        for ($i = 0; $i < sizeof($data); $i++) { //atfiltruoja pasikartojancius komentarus
             if ($upvoteExists != null) {
                 if (($myComment == $prev && $_SESSION['id'] == $data[$i]['laikintojas']) ||
                         ($pirmas && $_SESSION['id'] == $data[$i]['laikintojas']) ||
@@ -68,14 +71,26 @@ if (isset($_POST['modulis']) && isset($_POST['komentaras'])) {
 
         $data = $dataTransfered;
         unset($dataTransfered);
+        
+        for ($i = 0; $i < sizeof($data); $i++) {//jei prisijunges studentas parase komentara, jis bus pirmas
+            if ($commentExists && $data[$i]['Studento_id'] == $_SESSION['id']) {
+                $temp = $data[$i];//mano komentaras
+                unset($data[$i]);
+                array_unshift($data, $temp);
+                break;
+            }
+        }
     }
+
+
+
     $page = 1; //puslapio numeris
     $limit = 3; //viename puslapyje irasu skaicius
     if ($data != false) {
         $rows = sizeof($data); //kiek is viso irasu per puslapius turi but
     } else
         $rows = 0;
-    
+
     $pages = ceil($rows / $limit); //kiek bus puslapiu
 
     if (isset($_GET['page'])) {

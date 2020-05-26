@@ -7,7 +7,7 @@ $editObj = new edit();
 $newComment = $editObj -> TakeComment($_GET['comment']); //paimami nauji pranesimai
 
 if(isset($_POST['redaguoti'])){
-    $editObj -> EditComment($_GET['comment'], $_POST['komentaras']);
+    $editObj -> EditComment($_GET['comment'], $_POST['komentaras'], $_SESSION['user']);
     header("Location: komentarai.php?semester=". $_GET['semester'] ."&id=". $_GET['id'] . "&name=". $_GET['name']);
     exit;
 }

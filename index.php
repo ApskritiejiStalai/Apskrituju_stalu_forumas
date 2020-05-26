@@ -20,19 +20,6 @@ include('Control/admin.control.php');
     </head>
     <body>
         <header>
-            <!--//---------------------------------------------------->
-            <!--reik padaryt graziai username ir kazkur imest kad nesuvarytu ten virsaus-->
-          <!--            <i style="padding-left: 1350px; color: #3c88e7;" class="fa fa-user" aria-hidden="true">
-            //<?php
-// if(isset($_SESSION['name'])) {
-//                    echo $_SESSION['user'];
-//                    echo $_SESSION['name'];
-//                    } 
-//           
-?>
-</i>-->
-
-            <!---------------------------------------------------------------->  
 
 <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
                 <div class="pullRight">
@@ -59,6 +46,7 @@ include('Control/admin.control.php');
                         <div class="container2">
                             <label style="color:#3c88e7;" for="notification"><b><h1>Nauji pranešimai</h1></b></label>
                             <table class="semester">
+                                <?php if ($newComments != false) { ?>
                                 <thead>
                                     <tr>
                                         <th>Modulio kodas</th>
@@ -66,14 +54,17 @@ include('Control/admin.control.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if ($newComments != false)
-                                        foreach ($newComments as $key => $val) {
+                                    
+                                        <?php foreach ($newComments as $key => $val) {
                                             ?>
                                             <tr>
                                                 <td> <a href="redaguotiKomentara.php?semester=<?php echo $val['Semestras']; ?>&id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Modulio_id']; ?></td>
                                                 <td> <a href="redaguotiKomentara.php?semester=<?php echo $val['Semestras']; ?>&id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Data']; ?></td>
                                             </tr>
-    <?php } ?>
+                                    <?php } } else {?>
+                                            <br>
+                                            <label style="color:#3c88e7;" for="notification"><b><h3>Pranešimų nėra</h3></b></label>  
+                                    <?php } ?>
                                 </tbody>
                             </table>
 
@@ -136,15 +127,17 @@ include('Control/admin.control.php');
                 </div>
                 <div class="mobile-menu"><i class="fa fa-bars"></i></div>
             </div>
+            <?php if (isset($_SESSION['name'])) { ?>
             <div class="logas"> 
                 <i class="fa fa-user" aria-hidden="true">
                     <?php
-                    if (isset($_SESSION['name'])) {
+                        echo "<br>";
                         echo $_SESSION['user'];
+                        echo "<br>";
                         echo $_SESSION['name'];
-                    }
                     ?></i>
             </div>
+            <?php } ?>
         </header>
 
         <div class="home-slider">
@@ -168,10 +161,7 @@ include('Control/admin.control.php');
                 <span><i class="fa fa-caret-down" aria-hidden="true"></i></span>
             </div>
         </div>
-
-
         <div class="wrapper">
-
             <section class="our-history">
                 <div class="container">
                     <div class="row">

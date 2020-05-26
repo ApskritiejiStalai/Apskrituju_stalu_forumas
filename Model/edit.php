@@ -31,12 +31,17 @@ class edit {
         return false;
     }
     
-    public function EditComment($comment_id, $comment){
+    public function EditComment($comment_id, $comment, $user){
         include 'db.php';
-        
+        if($user == 'admin'){
+            $perziura = 1;
+        }
+        else {
+            $perziura = 0;
+        }
          $query = "UPDATE `{$this->comment_table}` "
                     . "SET `Komentaras`= '{$comment}',"
-                    . "`Perziureta` = 1 " 
+                    . "`Perziureta` = {$perziura} " 
                     . "WHERE `id` = '{$comment_id}'";
                     
          $result = mysqli_query($connect, $query); 

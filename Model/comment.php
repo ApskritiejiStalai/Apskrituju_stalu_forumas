@@ -19,7 +19,7 @@ class comment {
     public function TakeComment($module_id) {
         include 'db.php';
 
-        $query = "SELECT `id`, `Komentaras`, `Upvote`, `Perziureta`, `Data`, `Up_id`, `Studento_id`, `Studentas_id` as `laikintojas`"
+        $query = "SELECT `id`, `Komentaras`, `Upvote`, `Perziureta`, TIME(`Data`) as Laikas,  YEAR(`Data`) as Metai, MONTH(`Data`) as Menesis, DAY(`Data`) as Diena, `Up_id`, `Studento_id`, `Studentas_id` as `laikintojas`"
                 . "FROM `{$this->comment_table}` "
                 . "INNER JOIN `{$this->modcom_table}` "
                 . "ON `id`=`Komentaro_id` "

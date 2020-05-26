@@ -2,12 +2,16 @@
 <?php
 date_default_timezone_set('Europe/Moscow');
 session_start();
-if (!isset($_SESSION['logged']) || $_SESSION['user'] != "admin") {
-    header("Location: index.php");
-    die();
-}
 include('Control/login.control.php');
 include('Control/edit.control.php');
+if (!isset($_SESSION['logged']) || !isset($_POST['redagavimas'])) {
+    if($_SESSION['user'] != 'admin'){
+        header("Location: index.php");
+        die();
+    }
+}
+
+
 
 ?>
 <html lang="en">
@@ -29,7 +33,9 @@ include('Control/edit.control.php');
 <!--//---------------------------------------------------->
             <!--reik padaryt graziai username ir kazkur imest kad nesuvarytu ten virsaus-->
            <?php  if(isset($_SESSION['name'])) {
+                    echo "<br>";
                     echo $_SESSION['user'];
+                    echo "<br>";
                     echo $_SESSION['name'];
                     } 
            ?>
@@ -64,13 +70,10 @@ include('Control/edit.control.php');
                 <h1><?php echo $_GET['id']; ?> <?php echo $_GET['name']; ?></h1>  
             </div>
         </div>
-        <!--//-----bruksniukais padaryt kelia iki sito failo kaip db labore: pradzia > failas1 > failas2 > dabartinis----------------------------------------->
-
         <a href='index.php'>Pradžia</a>
         <a href='semestrai.php'>Semestrai</a>
         <a href='semestroModuliai.php?semester=<?php echo $_GET['semester']; ?>'>Moduliai</a>
         <a href='komentarai.php?semester=<?php echo $_GET['semester']; ?>&id=<?php echo $_GET['id']; ?>&name=<?php echo $_GET['name']; ?>'>Komentarai</a>
-        <!--//--------------------------------->
         <?php if (isset($_GET['comment'])) { ?>
 
             <div>
