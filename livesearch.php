@@ -2,23 +2,16 @@
 <?php
 include('Control/module.control.php');
 
-$temp = "<pages>";
+$content = "<pages>";
 foreach($data as $key => $val)
 {
-    $temp .= "<link>" . "<title>" . $val['Kodas'] . " " . $val['Pavadinimas'] . "</title>" . "<url>" .
-            "/ASF/komentarai.php?id=". $val['Kodas'] . "</url>" . "</link>";
+    $content .= "<link>" . "<title>" . $val['Kodas'] . " " . $val['Pavadinimas'] . "</title>" . "<url>" .
+            "/ASF/komentarai.php?semester=" . $val['Semestras'] . "&amp;id=" . $val['Kodas'] . "&amp;name=" . $val['Pavadinimas'] . "</url>" . "</link>";
 }
-$temp .= "</pages>";
-$content = $temp;
-touch($_SERVER['DOCUMENT_ROOT'] . "/ASF/myText.xml");
-chmod($_SERVER['DOCUMENT_ROOT'] . "/ASF/myText.xml", 0777);
-$fp = fopen($_SERVER['DOCUMENT_ROOT'] . "/ASF/myText.xml","wb");
-fwrite($fp,$content);
-fclose($fp);
-
+$content .= "</pages>";
 
 $xmlDoc=new DOMDocument();
-$xmlDoc->load('myText.xml');
+$xmlDoc->loadXML($content);
 
 $x=$xmlDoc->getElementsByTagName('link');
 
@@ -37,12 +30,12 @@ if (strlen($q)>0) {
         if ($hint=="") {
           $hint="<a href='" .
           $z->item(0)->childNodes->item(0)->nodeValue .
-          "' target='_blank'>" .
+          "' target='_self'>" .
           $y->item(0)->childNodes->item(0)->nodeValue . "</a>";
         } else {
           $hint=$hint . "<br /><a href='" .
           $z->item(0)->childNodes->item(0)->nodeValue .
-          "' target='_blank'>" .
+          "' target='_self'>" .
           $y->item(0)->childNodes->item(0)->nodeValue . "</a>";
         }
       }
