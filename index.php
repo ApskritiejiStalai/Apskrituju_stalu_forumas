@@ -108,27 +108,26 @@ include('Control/admin.control.php');
 
                 <div class="menu">
                     <ul>
-                        <li><a style="margin-top: 17px;" href="index.php" class="active">Pagrindinis</a></li>
-                        <li><a style="margin-top: 17px;" href="semestrai.php">Semestrai</a></li>
+                        <li><a style="margin-top: 17px; font-weight:bold;" href="index.php" class="active">Pagrindinis</a></li>
+                        <li><a style="margin-top: 17px; font-weight:bold;" href="semestrai.php">Semestrai</a></li>
                         <li>&nbsp;</li>
                         <?php if (isset($_SESSION['name'])) { ?>
-                            <ui style="float: left; margin-top: 15px;" class="logas pull-right">
-                                <a  class="fa fa-user" aria-hidden="true">
-                                    <?php
-                                    if (isset($_SESSION['name'])) {
-                                        echo $_SESSION['user'];
-                                        echo "<br>";
-                                        echo "&nbsp;&nbsp;&nbsp;&nbsp;";
-                                        echo $_SESSION['name'];
-                                    }
-                                    ?>
+                            <ui style="float: left; margin-top: 5px; " class="logas pull-right">
+                                <a  class="fa fa-user fa-1x" aria-hidden="true">
+                                    <a style="font-family: 'Open Sans';text-transform: uppercase; font-size: 14px; font-weight:bold;">
+                                        <?php
+                                        if (isset($_SESSION['name'])) {
+                                            echo nl2br($_SESSION['user'] . "\r\n" . $_SESSION['name']);
+                                        }
+                                        ?>
+                                    </a>
                                 </a>
                             </ui>
                         <?php } ?>
                         <li><?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
                                 <div class="pullRight">
                                     <form action="" method="post">
-                                        <button  style="width:auto; " type="logout" name="logout">Atsijungti</button>
+                                        <button  style="width:auto;" type="logout" name="logout">Atsijungti</button>
                                     </form>
                                 </div>
                             <?php } ?>
