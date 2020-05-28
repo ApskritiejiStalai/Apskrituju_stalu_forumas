@@ -1,5 +1,11 @@
 
 <?php
+session_start();
+if (!isset($_SESSION['logged'])) {
+    $_SESSION['access'] = false;
+    header("Location: index.php");
+    die();
+}
 include('Control/module.control.php');
 
 $content = "<pages>";

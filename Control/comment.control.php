@@ -85,7 +85,7 @@ if (isset($_POST['modulis']) && isset($_POST['komentaras'])) {
 
 
     $page = 1; //puslapio numeris
-    $limit = 3; //viename puslapyje irasu skaicius
+    $limit = 10; //viename puslapyje irasu skaicius
     if ($data != false) {
         $rows = sizeof($data); //kiek is viso irasu per puslapius turi but
     } else

@@ -6,6 +6,7 @@ include('Control/login.control.php');
 include('Control/edit.control.php');
 if (!isset($_SESSION['logged']) || !isset($_POST['redagavimas'])) {
     if ($_SESSION['user'] != 'admin') {
+        $_SESSION['access'] = false;
         header("Location: index.php");
         die();
     }

@@ -3,6 +3,7 @@
 date_default_timezone_set('Europe/Moscow');
 session_start();
 if (!isset($_SESSION['logged'])) {
+    $_SESSION['access'] = false;
     header("Location: index.php");
     die();
 }
@@ -152,6 +153,9 @@ include('Control/comment.control.php');
                                             if(strtotime($dateFromComment) + 1200 >= strtotime(date('Y-n-j H:i:s'))){
                                                 $edit = true;
                                             }
+                                        }
+                                        if($data[$i]['Perziureta'] == 0 && $data[$i]['Studento_id'] != $_SESSION['id'] && $_SESSION['user'] != 'admin'){
+                                            break;
                                         }
                                         if ($i >= $end) {
                                             break;

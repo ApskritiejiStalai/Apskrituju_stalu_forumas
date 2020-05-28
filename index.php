@@ -18,6 +18,31 @@ include('Control/admin.control.php');
         <link rel="stylesheet" type="text/css" href="css/login.css">
         <link rel="stylesheet" type="text/css" href="css/moduliuStyle.css">
     </head>
+    
+        <script type="text/javascript">
+            window.odometerOptions = {
+                format: '(,ddd)',
+            };
+        </script>
+        <script src="js/vendor/jquery-3.1.0.min.js"></script>
+        <script src="js/vendor/jquery.easing.min.js"></script>
+        <script src="js/vendor/tether.js"></script>
+        <script src="js/vendor/bootstrap.js"></script>
+        <script src="js/vendor/slick.js"></script>
+        <script src="js/vendor/isotope.pkgd.min.js"></script>
+        <script src="js/vendor/odometer.min.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+            // Get the modal
+            var modal = document.getElementById('id01');
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
     <body>
         <header>
 
@@ -37,6 +62,7 @@ include('Control/admin.control.php');
                                     <thead>
                                         <tr>
                                             <th>Modulio kodas</th>
+                                            <th>Pavadinimas</th>
                                             <th>Data</th>
                                         </tr>
                                     </thead>
@@ -46,6 +72,7 @@ include('Control/admin.control.php');
                                             ?>
                                             <tr>
                                                 <td> <a href="redaguotiKomentara.php?semester=<?php echo $val['Semestras']; ?>&id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Modulio_id']; ?></td>
+                                                <td> <a href="redaguotiKomentara.php?semester=<?php echo $val['Semestras']; ?>&id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Pavadinimas']; ?></td>
                                                 <td> <a href="redaguotiKomentara.php?semester=<?php echo $val['Semestras']; ?>&id=<?php echo $val['Modulio_id']; ?> &name= <?php echo $val['Pavadinimas']; ?>  &comment= <?php echo $val['id']; ?>" > <?php echo $val['Data']; ?></td>
                                             </tr>
                                             <?php
@@ -87,7 +114,7 @@ include('Control/admin.control.php');
                     </div>
                 </div>
             <?php } ?>
-            <?php if (isset($_GET['login']) && $_GET['login'] == 'false') { ?>
+            <?php if (isset($_SESSION['loginFailed']) && $_SESSION['loginFailed'] == true) { unset($_SESSION['loginFailed']); ?>
 
                 <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                 <script type="text/javascript">
@@ -99,7 +126,20 @@ include('Control/admin.control.php');
                                     timer: 2000
                                 })
                 </script>
-            <?php } ?>  
+            <?php  } ?>  
+            <?php if (isset($_SESSION['access']) && $_SESSION['access'] == false) { unset($_SESSION['access']); ?>
+
+                <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+                <script type="text/javascript">
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Prisijunkite norėdami naršyti ',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                })
+                </script>
+            <?php  } ?>  
             <div class="containerH">
 
                 <div >
@@ -176,7 +216,7 @@ include('Control/admin.control.php');
                                 joms geriausio sprendimo būdo.
                             </p>
 
-                            <a href="darbai.php" class="button">Atlikti darbai</a>
+                            <a href="darbai.php" class="button" target="_blank">Atlikti darbai</a>
                         </div>
                     </div>
                 </div>
@@ -202,30 +242,5 @@ include('Control/admin.control.php');
                 </div>
             </div>
         </footer>
-
-        <script type="text/javascript">
-            window.odometerOptions = {
-                format: '(,ddd)',
-            };
-        </script>
-        <script src="js/vendor/jquery-3.1.0.min.js"></script>
-        <script src="js/vendor/jquery.easing.min.js"></script>
-        <script src="js/vendor/tether.js"></script>
-        <script src="js/vendor/bootstrap.js"></script>
-        <script src="js/vendor/slick.js"></script>
-        <script src="js/vendor/isotope.pkgd.min.js"></script>
-        <script src="js/vendor/odometer.min.js"></script>
-        <script src="js/main.js"></script>
-        <script>
-            // Get the modal
-            var modal = document.getElementById('id01');
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        </script>
     </body>
 </html>
