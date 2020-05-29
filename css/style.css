@@ -14,22 +14,22 @@
     border-bottom:1px;*/
 }
 
-    .forumTable th {
-        padding: 5px;
-        border: 1px solid #562e72;
-        padding-bottom:500px;
-    }
+.forumTable th {
+    padding: 5px;
+    border: 1px solid #562e72;
+    padding-bottom:500px;
+}
 
-    .forumTable tr {
-        border: 1px solid #562e72;
-        padding-bottom: 500px;
-    }
+.forumTable tr {
+    border: 1px solid #562e72;
+    padding-bottom: 500px;
+}
 
-    .forumTable td {
-        padding: 5px;
-        border: 1px solid #562e72;
-        /*text-align:center;*/
-    }
+.forumTable td {
+    padding: 5px;
+    border: 1px solid #562e72;
+    /*text-align:center;*/
+}
 .pullLeft {
     float: left;
     display: inline-block;
@@ -39,6 +39,20 @@
     display: inline-block;
     padding-right:50px;
 }
+.sh{
+    position: relative; 
+    align-self: center;
+    padding-bottom: 25px;
+}
+.info{
+    position: absolute;
+    width:600px;
+    text-align: center;
+    border-bottom-left-radius:35px;
+    border-bottom-right-radius:35px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+}
 .search {
     font-family: sans-serif;
     width:100%;    
@@ -46,7 +60,6 @@
     padding-bottom: 1px;
     padding-left: 100px;
     padding-right: 5px;*/
- 
 }
 input{
     border:3px solid #0094ff;
@@ -70,8 +83,6 @@ input{
     justify-content: center;
 }
 
-
-
 .discussion {
     padding: 20px 0 140px;
     background-image: url("../assets/img/backgr.jpg");
@@ -81,17 +92,16 @@ input{
     position: relative;
 }
 
-    .discussion:before {
-        content: "";
-        background: rgba(0, 0, 0, 0.7);
-        position: absolute;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 0;
-    }
-
+.discussion:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
 
 input[type=text], select, textarea {
     width: 50%;
@@ -113,9 +123,9 @@ input[type=submit] {
     cursor: pointer;
 }
 
-    input[type=submit]:hover {
-        background-color: #45a049;
-    }
+input[type=submit]:hover {
+    background-color: #45a049;
+}
 
 .container1 {
     width:60%;

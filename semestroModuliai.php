@@ -94,27 +94,28 @@ include('Control/semester.control.php');
 
         <div class="intro-page" style="background-image: url('assets/img/backgr.jpg')">
             <div class="container">
-                <h1><?php echo $_GET['semester']; ?>  semestro moduliai</h1>  <!-- cia reikia kad vietoj zvaigzdutes semetro numeri rodytu ar pilna pavadinima --> 
+                <h1><?php echo $_GET['semester']; ?>  semestro moduliai</h1>  
             </div>
         </div>
-        <!--//-----bruksniukais padaryt kelia iki sito failo kaip db labore: pradzia > failas1 > failas2 > dabartinis----------------------------------------->
+
         <ul class="pagePath">
             <li><a href='index.php'>Pradžia</a></li>
             <li><a href='semestrai.php'>Semestrai</a><li>
         </ul>
-        <!--//--------------------------------->
-        <!--<div class="wrapper">-->
-        <div class="search box">
-            <input type="search" name="box" onkeyup="showResult(this.value)" placeholder="Suraskite modulį, įvesdami pavadinimą arba kodą" />
-            <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+        <div class="sh" >
+<!--            <form autocomplete="off">-->
+                <div class="search box">
+                    <input type="search" name="box" onkeyup="showResult(this.value)" placeholder="Suraskite modulį, įvesdami pavadinimą arba kodą" />
+                    <i style="color: #f7fdff;"class="fa fa-search fa-lg" aria-hidden="true"></i>
+                </div>
+            <!--</form>-->
+            <div style=" position: absolute;  background: #f2fafc; align-self: center;"  class="info" id="livesearch" ></div> 
         </div>
-        <div style="align-self: center; border: 0;" class="info" id="livesearch" ></div> 
-
+        <!--style="align-self: center; border: 0;"--> 
+        <!--position: absolute; background: white;display: block;-->
         <section class="four-elements">
             <div class="container">
-                <div> <!--class="row col-lg-8"-->
-                    <!--<div class="col-md-3">-->
-                    <!--<div class="four-elements--image"></div>-->
+                <div>
                     <table class="semester">
                         <tr>
                             <th>Kodas</th>
