@@ -18,31 +18,31 @@ include('Control/admin.control.php');
         <link rel="stylesheet" type="text/css" href="css/login.css">
         <link rel="stylesheet" type="text/css" href="css/moduliuStyle.css">
     </head>
-    
-        <script type="text/javascript">
-            window.odometerOptions = {
-                format: '(,ddd)',
-            };
-        </script>
-        <script src="js/vendor/jquery-3.1.0.min.js"></script>
-        <script src="js/vendor/jquery.easing.min.js"></script>
-        <script src="js/vendor/tether.js"></script>
-        <script src="js/vendor/bootstrap.js"></script>
-        <script src="js/vendor/slick.js"></script>
-        <script src="js/vendor/isotope.pkgd.min.js"></script>
-        <script src="js/vendor/odometer.min.js"></script>
-        <script src="js/main.js"></script>
-        <script>
-            // Get the modal
-            var modal = document.getElementById('id01');
 
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
+    <script type="text/javascript">
+        window.odometerOptions = {
+            format: '(,ddd)',
+        };
+    </script>
+    <script src="js/vendor/jquery-3.1.0.min.js"></script>
+    <script src="js/vendor/jquery.easing.min.js"></script>
+    <script src="js/vendor/tether.js"></script>
+    <script src="js/vendor/bootstrap.js"></script>
+    <script src="js/vendor/slick.js"></script>
+    <script src="js/vendor/isotope.pkgd.min.js"></script>
+    <script src="js/vendor/odometer.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
-        </script>
+        }
+    </script>
     <body>
         <header>
 
@@ -92,54 +92,40 @@ include('Control/admin.control.php');
 
             </div>
 
-
-
-            <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] != true || !isset($_SESSION['logged'])) { ?>
-                <div class="pullRight">
-                    <button onclick="document.getElementById('id01').style.display = 'block'" style="width:auto; margin-top: 35px;">Prisijungti</button>
-                    <div id="id01" class="modal">
-                        <form class="modal-content animate" action="?login" method="post">
-                            <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>
-                            <div class="container2">
-                                <label for="uname"><b>Prisijungimo vardas</b></label>
-                                <input type="text" name="uname" id="uname" required>
-
-                                <label for="psw"><b>Slaptažodis</b></label>
-                                <input type="password" name="psw"  id="psw" required>
-
-                                <button  type="submit" name="submit">Prisijungti</button>
-
-                            </div>
-                        </form>                       
-                    </div>
-                </div>
-            <?php } ?>
-            <?php if (isset($_SESSION['loginFailed']) && $_SESSION['loginFailed'] == true) { unset($_SESSION['loginFailed']); ?>
+            <?php
+            if (isset($_SESSION['loginFailed']) && $_SESSION['loginFailed'] == true) {
+                unset($_SESSION['loginFailed']);
+                ?>
 
                 <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                 <script type="text/javascript">
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: 'Neteisingai įvestas prisijungimo vardas arba slaptažodis ',
-                                    showConfirmButton: false,
-                                    timer: 2000
-                                })
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Neteisingai įvestas prisijungimo vardas arba slaptažodis ',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
                 </script>
-            <?php  } ?>  
-            <?php if (isset($_SESSION['access']) && $_SESSION['access'] == false) { unset($_SESSION['access']); ?>
+            <?php } ?>  
+            <?php
+            if (isset($_SESSION['access']) && $_SESSION['access'] == false) {
+                unset($_SESSION['access']);
+                ?>
 
                 <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                 <script type="text/javascript">
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: 'Prisijunkite norėdami naršyti ',
-                                    showConfirmButton: false,
-                                    timer: 2000
-                                })
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Prisijunkite norėdami naršyti ',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
                 </script>
-            <?php  } ?>  
+                <?php
+            }
+            ?>  
             <div class="containerH">
 
                 <div >
@@ -164,14 +150,38 @@ include('Control/admin.control.php');
                                 </a>
                             </ui>
                         <?php } ?>
-                        <li><?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) { ?>
+                        <li>
+                            <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] != true || !isset($_SESSION['logged'])) { ?>
+                                <div class="pullRight">
+                                    <button onclick="document.getElementById('id01').style.display = 'block'" style="width:auto; margin-top: 10px;">Prisijungti</button>
+                                    <div id="id01" class="modal">
+                                        <form class="modal-content animate" action="?login" method="post">
+                                            <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>
+                                            <div class="container2">
+                                                <label for="uname"><b>Prisijungimo vardas</b></label>
+                                                <input type="text" name="uname" id="uname" required>
+
+                                                <label for="psw"><b>Slaptažodis</b></label>
+                                                <input type="password" name="psw"  id="psw" required>
+
+                                                <button  type="submit" name="submit">Prisijungti</button>
+
+                                            </div>
+                                        </form>                       
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
+                                ?>
                                 <div class="pullRight">
                                     <form action="" method="post">
                                         <button  style="width:auto;" type="logout" name="logout">Atsijungti</button>
                                     </form>
                                 </div>
                             <?php } ?>
+
                         </li>
+
                     </ul>
 
                 </div>
