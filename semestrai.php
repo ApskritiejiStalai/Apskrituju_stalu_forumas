@@ -14,7 +14,6 @@ include 'Control/http_build_url.control.php';
         <title>ASF SEMESTRAI</title>
         <link rel="icon" href="assets/img/icon.png">
         <meta charset="utf-8" />
-        <!--<link rel="icon" href="favicon.png" type="image/x-icon" />-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <link href="css/vendor/bootstrap.css" rel="stylesheet" />
         <link href="css/vendor/font-awesome.css" rel="stylesheet" />
@@ -26,10 +25,7 @@ include 'Control/http_build_url.control.php';
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-
         <header>
-            
-
             <div class="containerH">
                 <div >
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
@@ -64,32 +60,19 @@ include 'Control/http_build_url.control.php';
                 </div>
                 <div class="mobile-menu"><i class="fa fa-bars"></i></div>
             </div>
-            
-            <!---------------------------------------------------------------->  
         </header>
-
-
-
         <div class="intro-page" style="background-image: url('assets/img/backgr.jpg')">
             <div class="container">
                 <h1>Semestrai</h1>
             </div>
         </div>
 
-        <!--//-----bruksniukais padaryt kelia iki sito failo kaip db labore: pradzia > failas1 > failas2 > dabartinis----------------------------------------->
-        <!--        <a href='index.php'>Pradžia</a>
-                <a href='semestrai.php'>Semestrai</a>-->
         <ul class="pagePath">
             <li><a href='index.php'>Pradžia</a></li>
         </ul>
-        <!--//--------------------------------->
-
         <section class="four-elements">
             <div class="container">
                 <div>
-                    <!--class="row col-lg-8"-->
-                    <!--<div class="col-md-3">-->
-                    <!--<div class="four-elements--image"></div>-->
                     <table class="my_table" align="center">
                         <?php for ($i = 1; $i <= 7; $i += 2) { ?>
                             <tr>
@@ -119,7 +102,6 @@ include 'Control/http_build_url.control.php';
                 </div>
             </div>
         </footer>
-
         <script type="text/javascript">
             window.odometerOptions = {
                 format: '(,ddd)',

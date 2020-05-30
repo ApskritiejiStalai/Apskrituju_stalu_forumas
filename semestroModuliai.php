@@ -15,7 +15,6 @@ include('Control/semester.control.php');
         <title>ASF MODULIAI</title>
         <link rel="icon" href="assets/img/icon.png">
         <meta charset="utf-8" />
-        <!--<link rel="icon" href="favicon.png" type="image/x-icon" />-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <link href="css/vendor/bootstrap.css" rel="stylesheet" />
         <link href="css/vendor/font-awesome.css" rel="stylesheet" />
@@ -51,9 +50,7 @@ include('Control/semester.control.php');
         </script>
     </head>
     <body>
-
         <header>
-
             <div class="containerH">
                 <div class="logo">
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
@@ -88,16 +85,12 @@ include('Control/semester.control.php');
                 </div>
                 <div class="mobile-menu"><i class="fa fa-bars"></i></div>
             </div>
-
-
         </header>
-
         <div class="intro-page" style="background-image: url('assets/img/backgr.jpg')">
             <div class="container">
                 <h1><?php echo $_GET['semester']; ?>  semestro moduliai</h1>  
             </div>
         </div>
-
         <ul class="pagePath">
             <li><a href='index.php'>Pradžia</a></li>
             <a href='semestrai.php'>Semestrai</a>
@@ -108,8 +101,7 @@ include('Control/semester.control.php');
                     <i style="color: #0094ff;"class="fa fa-search fa-lg" aria-hidden="true"></i>
                 </div>
             <div style=" position: absolute;  background: #f7fdff; align-self: center;"  class="info" id="livesearch" ></div> 
-        </div>
-        
+        </div>        
         <section class="four-elements">
             <div class="container">
                 <div>
@@ -129,7 +121,6 @@ include('Control/semester.control.php');
                 </div>
             </div>
         </section>
-
         <footer>
             <div class="container">
                 <div class="row">
@@ -147,7 +138,6 @@ include('Control/semester.control.php');
                 </div>
             </div>
         </footer>
-
         <script type="text/javascript">
             window.odometerOptions = {
                 format: '(,ddd)',

@@ -1,95 +1,69 @@
-.info{
- /*border:3px solid #0094ff;*/
-/*    
-    width:600px;
-    background: white;
-    padding:0px 10px;
-     width: 100%;
-    text-align: center;
-    margin: 2px;
-    padding-top: 10px;
-    height: 50px;
-    display: block;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
-  
-    height:40px;
-    width:600px;   
-    padding:0px 10px;*/
-}
 .semester {
-	width: 100%;
-	height: auto;
+    width: 100%;
+    height: auto;
 }
-	.semester th {
-		padding: 5px;
-		border: 1px solid #562e72;
-		padding-bottom: 5px;
-		/*align-items: center;*/
-	}
+.semester th {
+    padding: 5px;
+    border: 1px solid #562e72;
+    padding-bottom: 5px;
+}
 
-	.semester tr {
-		align-items: center;
-		border: 1px solid #562e72;
-		padding-bottom: 5px;
-		/*align-items: center;*/
-	}
+.semester tr {
+    align-items: center;
+    border: 1px solid #562e72;
+    padding-bottom: 5px;
+}
 
-	.semester td {
-		padding: 5px;
-		border: 1px solid #562e72;
-		/*align-items: center;*/
-		/*text-align:center;*/
-	}
+.semester td {
+    padding: 5px;
+    border: 1px solid #562e72;
+}
 
 .my_table tr {
-	display: flex;
+    display: flex;
 }
 
 .my_table td {
-	margin: 2px;
-	height: 100px;
-	display: flex;
-	flex-grow: 1;
-	align-items: center;
-	justify-content: center;
+    margin: 2px;
+    height: 100px;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
 }
 .my_table th {
-	height: 90px;
+    height: 90px;
 }
 .tcomments {
-	height: auto;
-	margin: 2px;
-	padding-top: 10px;
-	/*height: 50px;*/
-	display: flex;
-	flex-grow: 1;
-	align-items: center;
-	justify-content: center;
+    height: auto;
+    margin: 2px;
+    padding-top: 10px;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
 }
-	.tcomments th {
-		padding: 5px;
-	}
+.tcomments th {
+    padding: 5px;
+}
 
-	.tcomments tr {
-		align-items: center;
-	}
+.tcomments tr {
+    align-items: center;
+}
 
-	.tcomments td {
-		padding: 5px;
-		align-items: center;
-		text-align:center;
-	}
+.tcomments td {
+    padding: 5px;
+    align-items: center;
+    text-align:center;
+}
 
 .pages {
-	height: auto;
-	margin: 2px;
-	padding-top: 10px;
-	/*height: 50px;*/
-	display: flex;
-	flex-grow: 1;
-	align-items: center;
-	justify-content: center;
+    height: auto;
+    margin: 2px;
+    padding-top: 10px;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
 }
 

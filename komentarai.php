@@ -15,18 +15,15 @@ include('Control/comment.control.php');
         <title>ASF komentarai</title>
         <link rel="icon" href="assets/img/icon.png">
         <meta charset="utf-8" />
-        <!--<link rel="icon" href="favicon.png" type="image/x-icon" />-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <link href="css/vendor/bootstrap.css" rel="stylesheet" />
         <link href="css/vendor/font-awesome.css" rel="stylesheet" />
         <link href="css/main.css" rel="stylesheet" />
-        <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
         <link rel="stylesheet" type="text/css" href="css/login.css">
         <link rel="stylesheet" type="text/css" href="css/moduliuStyle.css">
     </head>
     <body>
-        <header>
-          
+        <header>          
             <?php if (isset($_SESSION['exists']) && $_SESSION['exists'] == true) { unset($_SESSION['exists']);?>
                 <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                 <script type="text/javascript">
@@ -39,12 +36,10 @@ include('Control/comment.control.php');
                     })
                 </script>
             <?php } ?>
-
             <div class="containerH">
                 <div class="logo">
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
                 </div>
-
                 <div class="menu1">
                     <ul>
                         <li><a style="margin-top: 17px; font-weight:bold;" href="index.php">Pagrindinis</a></li>
@@ -85,8 +80,7 @@ include('Control/comment.control.php');
             <li><a href='index.php'>Pradžia</a></li>
             <li><a href='semestrai.php'>Semestrai</a></li>
             <li><a href='semestroModuliai.php?semester=<?php echo $_GET['semester']; ?>'>Moduliai</a></li>
-        </div>
-        
+        </div>        
         <?php if (isset($_GET['comment'])) { ?>
             <div>
                 <section class="four-elements">
@@ -107,9 +101,7 @@ include('Control/comment.control.php');
                     </div>
                 </section>
             </div>
-
         <?php } else { ?>
-
             <div>
                 <section class="four-elements">
                     <div class="container" style="width: 45%">
@@ -134,10 +126,9 @@ include('Control/comment.control.php');
                                     <th></th>
                                 </tr>
                             <?php } ?>
-
                             <?php
                             if ($data != false) {
-                                $edit = false; //galimybe studentui redaguoti per pirmasias 20min
+                                $edit = false; 
                                 ?>
                                 <table class="tcomments">
                                     <tr>
@@ -200,9 +191,7 @@ include('Control/comment.control.php');
                             ?>><i class="fa fa-fast-forward" aria-hidden="true"></i></a> <?php } ?>
                     </div>
                 </section>
-            </div>
-
-            
+            </div>            
         <?php } ?>
         <footer>
             <div class="container">
@@ -218,7 +207,6 @@ include('Control/comment.control.php');
                     <div class="col-md-6 col-sm-12">
                         <p><a href="https://ktu.edu/">Kauno technologijos universitetas</a></p>
                     </div>
-
                 </div>
             </div>
         </footer>
@@ -238,17 +226,15 @@ include('Control/comment.control.php');
                 function upvote(upvote, modulis, komentaras) { //upvote mygtuko scriptas
                     $(':button').prop('disabled', true);
                     $.ajax({
-
                         url: 'Control/comment.control.php',
                         type: 'post',
                         data: 'upvote=' + upvote + '&modulis=' + modulis + '&komentaras=' + komentaras
-
                     });
                     window.setTimeout(function () {
                         location.reload()
                     }, 1000)
                 }
-            </script>
+        </script>
         <script type="text/javascript">
             window.odometerOptions = {
                 format: '(,ddd)',
@@ -262,6 +248,5 @@ include('Control/comment.control.php');
         <script src="js/vendor/isotope.pkgd.min.js"></script>
         <script src="js/vendor/odometer.min.js"></script>
         <script src="js/main.js"></script>
-
     </body>
 </html>

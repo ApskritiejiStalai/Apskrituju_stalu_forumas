@@ -1,17 +1,11 @@
 .moduleTable {
     width: 100%;
     height: auto;
-    /*border: 1px solid #562e72;*/
 }
 .forumTable {
     width: 100%;
     height: auto;
-    /*border: 1px solid #562e72;*/
     vertical-align:auto;
-    /*border-left:1px;
-    border-right:1px;
-    border-top:1px;
-    border-bottom:1px;*/
 }
 
 .forumTable th {
@@ -28,7 +22,6 @@
 .forumTable td {
     padding: 5px;
     border: 1px solid #562e72;
-    /*text-align:center;*/
 }
 .pullLeft {
     float: left;
@@ -56,10 +49,6 @@
 .search {
     font-family: sans-serif;
     width:100%;    
-    /*padding-top:30px;
-    padding-bottom: 1px;
-    padding-left: 100px;
-    padding-right: 5px;*/
 }
 input{
     border:3px solid #0094ff;
@@ -76,7 +65,6 @@ input{
     text-align: center;
     margin: 2px;
     padding-top: 10px;
-    /*height: 50px;*/
     display: flex;
     flex-grow: 1;
     align-items: center;

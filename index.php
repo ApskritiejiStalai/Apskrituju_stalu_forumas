@@ -9,12 +9,10 @@ include('Control/admin.control.php');
         <title>ASF</title>
         <link rel="icon" href="assets/img/icon.png">
         <meta charset="utf-8" />
-        <!--<link rel="icon" href="favicon.png" type="image/x-icon" />-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <link href="css/vendor/bootstrap.css" rel="stylesheet" />
         <link href="css/vendor/font-awesome.css" rel="stylesheet" />
         <link href="css/main.css" rel="stylesheet" />
-        <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
         <link rel="stylesheet" type="text/css" href="css/login.css">
         <link rel="stylesheet" type="text/css" href="css/moduliuStyle.css">
     </head>
@@ -33,10 +31,8 @@ include('Control/admin.control.php');
     <script src="js/vendor/odometer.min.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // Get the modal
         var modal = document.getElementById('id01');
 
-        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = "none";
@@ -67,7 +63,6 @@ include('Control/admin.control.php');
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                         <?php foreach ($newComments as $key => $val) {
                                             ?>
                                             <tr>
@@ -85,53 +80,47 @@ include('Control/admin.control.php');
                                 ?>
                                 </tbody>
                             </table>
-
                         </div>
                     </form>
-                </div>  
-
+                </div> 
             </div>
 
             <?php
             if (isset($_SESSION['loginFailed']) && $_SESSION['loginFailed'] == true) {
                 unset($_SESSION['loginFailed']);
                 ?>
-
                 <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                 <script type="text/javascript">
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Neteisingai įvestas prisijungimo vardas arba slaptažodis ',
-                                showConfirmButton: false,
-                                timer: 2000
-                            })
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Neteisingai įvestas prisijungimo vardas arba slaptažodis ',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                })
                 </script>
             <?php } ?>  
             <?php
             if (isset($_SESSION['access']) && $_SESSION['access'] == false) {
                 unset($_SESSION['access']);
                 ?>
-
                 <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                 <script type="text/javascript">
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Prisijunkite norėdami naršyti ',
-                                showConfirmButton: false,
-                                timer: 2000
-                            })
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Prisijunkite norėdami naršyti ',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                })
                 </script>
                 <?php
             }
             ?>  
             <div class="containerH">
-
                 <div >
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
                 </div>
-
                 <div class="menu">
                     <ul>
                         <li><a style="margin-top: 17px; font-weight:bold;" href="index.php" class="active">Pagrindinis</a></li>
@@ -179,21 +168,15 @@ include('Control/admin.control.php');
                                     </form>
                                 </div>
                             <?php } ?>
-
                         </li>
-
                     </ul>
-
                 </div>
                 <div class="mobile-menu"><i class="fa fa-bars"></i></div>
             </div>
-
         </header>
 
-        <div class="home-slider">
-            <!--virsus-->
+        <div class="home-slider">          
             <div class="home-slider--wrapper">
-                <!--trikampiukas-->
                 <div>
                     <div class="home-slider--wrapper__inner" style="background-image: url('assets/img/backgr.jpg')">
                         <div class="container">
@@ -225,8 +208,7 @@ include('Control/admin.control.php');
                                 Jų tikslas – gauti grįžtamąjį ryšį apie einamąjį semestrą, išsiaiškinti studentams kylančias problemas bei ieškoti
                                 joms geriausio sprendimo būdo.
                             </p>
-
-                            <a href="darbai.php" class="button" <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] = true) { ?> target="_blank" <?php } ?> >Atlikti darbai</a>
+                            <a href="darbai.php" class="button" <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] = true) { ?> target="_blank" <?php } ?> >Atlikti darbai</a>
                         </div>
                     </div>
                 </div>
@@ -234,7 +216,6 @@ include('Control/admin.control.php');
         </div>
 
         <footer>
-
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
@@ -248,7 +229,6 @@ include('Control/admin.control.php');
                     <div class="col-md-6 col-sm-12">
                         <p><a href="https://ktu.edu/">Kauno technologijos universitetas</a></p>
                     </div>
-
                 </div>
             </div>
         </footer>

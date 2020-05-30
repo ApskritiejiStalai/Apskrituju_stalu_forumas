@@ -48,7 +48,6 @@ if (strlen($q)>0) {
     }
   }
 }
-
 // Set output to "no suggestion" if no hint was found
 // or to the correct values
 if ($hint=="") {
@@ -56,7 +55,6 @@ if ($hint=="") {
 } else {
   $response=$hint;
 }
-
 //output the response
 echo $response;
 ?> 

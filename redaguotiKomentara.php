@@ -28,18 +28,16 @@ if (!isset($_SESSION['logged']) || !isset($_POST['redagavimas'])) {
     </head>
     <body>
         <header>
-
             <div class="containerH">
                 <div class="logo">
                     <a href="index.php"><img src="assets/img/logobalta.png" alt="" /></a>
                 </div>
-
                 <div class="menu">
                     <ul>
                         <li><a style="margin-top: 17px; font-weight:bold;" href="index.php">Pagrindinis</a></li>
                         <li><a style="margin-top: 17px; font-weight:bold;" href="semestrai.php">Semestrai</a></li>
                         <li>&nbsp;</li>
-                         <?php if (isset($_SESSION['name'])) { ?>
+                        <?php if (isset($_SESSION['name'])) { ?>
                             <ui style="float: left; margin-top: 5px; " class="logas pull-right">
                                 <a  class="fa fa-user fa-1x" aria-hidden="true">
                                     <a style="font-family: 'Open Sans';text-transform: uppercase; font-size: 14px; font-weight:bold;">
@@ -78,7 +76,6 @@ if (!isset($_SESSION['logged']) || !isset($_POST['redagavimas'])) {
         </div>
         <?php if (isset($_GET['comment'])) {
             ?>
-
             <div>
                 <section class="four-elements">
                     <div class="container" style="width: 45%">
@@ -101,7 +98,6 @@ if (!isset($_SESSION['logged']) || !isset($_POST['redagavimas'])) {
                     </div>
                 </section>
             </div>
-
         <?php } ?>
         <footer>
             <div class="container">
@@ -117,11 +113,9 @@ if (!isset($_SESSION['logged']) || !isset($_POST['redagavimas'])) {
                     <div class="col-md-6 col-sm-12">
                         <p><a href="https://ktu.edu/">Kauno technologijos universitetas</a></p>
                     </div>
-
                 </div>
             </div>
         </footer>
-
         <script type="text/javascript">
             window.odometerOptions = {
                 format: '(,ddd)',

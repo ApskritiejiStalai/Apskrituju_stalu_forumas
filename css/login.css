@@ -21,22 +21,22 @@ header .menu1 li {
     margin-left: 60px;
 }
 
-    header .menu1 li a {
-        margin-left:50px;
-        display: block;
-        font: 500 14px "Open Sans";
-        color: #ffffff;
-        text-transform: uppercase;
-    }
+header .menu1 li a {
+    margin-left:50px;
+    display: block;
+    font: 500 14px "Open Sans";
+    color: #ffffff;
+    text-transform: uppercase;
+}
 
-        header .menu1 li a.active, header .menu1 li a:hover {
-            color: #3c88e7;
-        }
+header .menu1 li a.active, header .menu1 li a:hover {
+    color: #3c88e7;
+}
 
-        header .menu1 li a.active {
-            font-weight: 600;
-            margin-right:10px;
-        }
+header .menu1 li a.active {
+    font-weight: 600;
+    margin-right:10px;
+}
 @media screen and (max-width: 991px) {
     header .containerH{
         margin-left:10px;
@@ -53,17 +53,14 @@ header .menu1 li {
         -webkit-transition: all 0.3s ease;
         transition: all 0.3s ease;
     }
+    header .menu1 li {
+        margin: 0 0 20px;
+        width: 100%;
+    }
 
-        
-
-        header .menu1 li {
-            margin: 0 0 20px;
-            width: 100%;
-        }
-
-            header .menu1 li a {
-                font-size: 16px;
-            }
+    header .menu1 li a {
+        font-size: 16px;
+    }
 
     header .mobile-menu {
         display: block;
@@ -78,37 +75,28 @@ header .menu1 li {
     }
 }
 .pagePath {
-    /*margin: 10px 0px 10px 0px;
-    display: inline-block;
-    float: left;
-    padding-left:100px;*/
     margin: 2px;
     padding-top: 20px;
-    /*height: 50px;*/
     display: flex;
     flex-grow: 1;
     align-items: center;
     justify-content: center;
 }
 
-    .pagePath li {
-        float: left;
-        display: block;
-        margin-right: 5px;
-        background:  url(page-path-separator.png) center right no-repeat;
-        padding-right: 15px;
-    }
+.pagePath li {
+    float: left;
+    display: block;
+    margin-right: 5px;
+    background:  url(page-path-separator.png) center right no-repeat;
+    padding-right: 15px;
+}
 
-        .pagePath li:last-child {
-            background: none;
-        }
+.pagePath li:last-child {
+    background: none;
+}
 
 .logas {
-    /*float: right;*/
-    /*display: inline-block;
-    padding-right: 50px;*/
     color: #3c88e7;
-    /*padding-top: 0px;*/
 }
 
 .pullRight {
@@ -147,7 +135,6 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
 button {
     display: inline-block;
     min-width: 100%;
@@ -157,68 +144,57 @@ button {
     font: 600 14px/1 "Open Sans";
     background: #3c88e7;
     color: #ffffff;
-    margin: 8px 0; /*0 24px 0 0;*/
+    margin: 8px 0; 
     border-radius: 4px;
     text-transform: uppercase;
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    /*outline: none;*/
-    /*margin-top: 30px;*/
 }
 
 button-w {
     background: none;
     border-color: #ffffff;
     margin: 0;
-    /*outline: none;*/
 }
 
 button:hover {
     background: transparent;
     color: #3c88e7;
     border-color: #3c88e7;
-    /*outline: none;*/
 }
 
 * {
     outline: none;
 }
-
-
 .container2 {
     padding: 16px;
-    /*background-image: url(assets/img/form.png);*/
 }
 
 span.psw {
     float: right;
     padding-top: 16px;
 }
-
-/* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
     padding-top: 60px;
 }
 
-/* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 5% auto 15% auto; 
     border: 1px solid #888;
-    width: 40%; /* Could be more or less, depending on screen size */
+    width: 40%; 
 }
 
-/* The Close Button (x) */
 .close {
     position: absolute;
     right: 25px;
@@ -228,13 +204,12 @@ span.psw {
     font-weight: bold;
 }
 
-    .close:hover,
-    .close:focus {
-        color: red;
-        cursor: pointer;
-    }
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
 
-/* Add Zoom Animation */
 .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
@@ -260,7 +235,6 @@ span.psw {
     }
 }
 
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {
         display: block;
