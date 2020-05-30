@@ -100,7 +100,7 @@ include('Control/semester.control.php');
 
         <ul class="pagePath">
             <li><a href='index.php'>Pradžia</a></li>
-            <li><a href='semestrai.php'>Semestrai</a><li>
+            <a href='semestrai.php'>Semestrai</a>
         </ul>
         <div class="sh" >
                 <div class="search box">

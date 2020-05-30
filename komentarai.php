@@ -98,11 +98,11 @@ include('Control/comment.control.php');
                                     <th></th>
                                 </tr>
                                 <tr>
-                                    <td> <textarea placeholder="Rašykite savo komentarą..." id="komentaras" name="komentaras" rows="2" cols="75" required></textarea> </td>
+                                    <td> <textarea onkeyup="textCounter(this, 'counter', 150);" placeholder="Rašykite savo komentarą..." id="komentaras" name="komentaras" rows="2" cols="75" required></textarea> </td>
                                     <td style="padding-top:0px;"><button type="submit" name="komentuoti" style="size: 100px;">Pateikti</button> </td>
                                 </tr>
-
                             </table>
+                            Liko simbolių: <input disabled  maxlength="3" size="3" value="150" id="counter">
                         </form>
                     </div>
                 </section>
@@ -155,7 +155,7 @@ include('Control/comment.control.php');
                                             }
                                         }
                                         if($data[$i]['Perziureta'] == 0 && $data[$i]['Studento_id'] != $_SESSION['id'] && $_SESSION['user'] != 'admin'){
-                                            break;
+                                            continue;
                                         }
                                         if ($i >= $end) {
                                             break;

@@ -90,12 +90,13 @@ if (!isset($_SESSION['logged']) || !isset($_POST['redagavimas'])) {
                                 </tr>
                                 <?php foreach ($newComment as $key => $val) { ?>
                                     <tr>
-                                        <td> <textarea id="komentaras" name="komentaras" rows="2" cols="75" required><?php if (!isset($_POST['redaguoti'])) echo $val['Komentaras']; ?></textarea> </td>
+                                        <td> <textarea onkeyup="textCounter(this, 'counter', 150);" id="komentaras" name="komentaras" rows="2" cols="75" required><?php if (!isset($_POST['redaguoti'])) echo $val['Komentaras']; ?></textarea> </td>
                                         <td style="padding-top:0px;"><button type="submit" name="redaguoti" style="size: 100px;">Pateikti</button> </td>
                                         <td style="padding-top:0px;"><button type="submit" name="istrinti" style="size: 100px;">Ištrinti</button> </td>
                                     </tr>
                                 <?php } ?>
                             </table>
+                            Liko simbolių: <input disabled  maxlength="3" size="3" value="150" id="counter">
                         </form>
                     </div>
                 </section>
@@ -134,6 +135,17 @@ if (!isset($_SESSION['logged']) || !isset($_POST['redagavimas'])) {
         <script src="js/vendor/isotope.pkgd.min.js"></script>
         <script src="js/vendor/odometer.min.js"></script>
         <script src="js/main.js"></script>
-
+        <script>
+            function textCounter(field, field2, maxlimit) //simboliu limitas zinutej
+            {
+                var countfield = document.getElementById(field2);
+                if (field.value.length > maxlimit) {
+                    field.value = field.value.substring(0, maxlimit);
+                    return false;
+                } else {
+                    countfield.value = maxlimit - field.value.length;
+                }
+            }
+        </script>
     </body>
 </html>
