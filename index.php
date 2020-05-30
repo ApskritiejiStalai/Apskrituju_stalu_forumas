@@ -226,7 +226,7 @@ include('Control/admin.control.php');
                                 joms geriausio sprendimo būdo.
                             </p>
 
-                            <a href="darbai.php" class="button" target="_blank">Atlikti darbai</a>
+                            <a href="darbai.php" class="button" <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] = true) { ?> target="_blank" <?php } ?> >Atlikti darbai</a>
                         </div>
                     </div>
                 </div>

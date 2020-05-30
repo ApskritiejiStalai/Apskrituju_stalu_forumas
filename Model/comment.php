@@ -161,6 +161,7 @@ class comment {
             foreach ($result as $key => $val)
                 $vote_id = $val['Up_id'];
         }
+        else return 0;
         if (mysqli_num_rows($result) != 0)
             return $vote_id;
         else
@@ -176,7 +177,8 @@ class comment {
                 . "AND `Modulio_id` = '{$module_id}'";
 
         $result = mysqli_query($connect, $query);
-
+        if (is_bool($result))
+            return false;
         if (mysqli_num_rows($result) != 0)
             return true;
         else
@@ -198,6 +200,7 @@ class comment {
             foreach ($result as $key => $val)
                 $text = $val['Komentaras'];
         }
+        else return false;
         if (mysqli_num_rows($result) != 0) {
             return $text;
         }
@@ -212,6 +215,8 @@ class comment {
                     WHERE `Komentaras` = '{$comment}'";
 
         $result = mysqli_query($connect, $query);
+        if (is_bool($result))
+            return false;
         $result = mysqli_fetch_assoc($result);
         if ($result['kiekis'] == 0) {
             return false;
