@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2020 m. Geg 25 d. 17:57
+-- Generation Time: May 31, 2020 at 12:35 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.4
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Sukurta duomenų struktūra lentelei `admin_login`
+-- Table structure for table `admin_login`
 --
 
 CREATE TABLE `admin_login` (
@@ -37,7 +37,7 @@ CREATE TABLE `admin_login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Sukurta duomenų kopija lentelei `admin_login`
+-- Dumping data for table `admin_login`
 --
 
 INSERT INTO `admin_login` (`Admin_id`, `Vardas`, `Pavarde`, `Slapyvardis`, `Slaptazodis`, `Elektroninis_Pastas`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `admin_login` (`Admin_id`, `Vardas`, `Pavarde`, `Slapyvardis`, `Slap
 -- --------------------------------------------------------
 
 --
--- Sukurta duomenų struktūra lentelei `komentarai`
+-- Table structure for table `komentarai`
 --
 
 CREATE TABLE `komentarai` (
@@ -61,38 +61,42 @@ CREATE TABLE `komentarai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Sukurta duomenų kopija lentelei `komentarai`
+-- Dumping data for table `komentarai`
 --
 
 INSERT INTO `komentarai` (`id`, `Komentaras`, `Upvote`, `Perziureta`, `Data`) VALUES
-(1268, 'Samas yra fainiausias studentas -simruo', 0, 1, '2020-05-20 17:17:41'),
-(1269, 'ketvirtas - tomgir\r\n', 2, 1, '2020-05-20 17:18:20'),
-(1270, 'penktas <3 daldel\r\n', 0, 1, '2020-05-20 17:19:00'),
-(1271, 'egis bieliauskaite sestas', 0, 1, '2020-05-20 17:19:40'),
-(1272, 'arnrad septinas kometarcikas', 0, 1, '2020-05-20 17:21:26'),
-(1273, 'KOMENTARAS arnrad', 0, 1, '2020-05-20 17:26:57'),
-(1274, 'dontru komentaaariuxss', 1, 1, '2020-05-20 17:28:24'),
-(1275, 'gusger xiukas', 3, 1, '2020-05-20 17:29:58'),
-(1276, 'Vacius Usas blogas destytojas - gusger', 2, 1, '2020-05-20 17:30:41'),
-(1277, 'Jusas? More like Usas', 3, 1, '2020-05-20 17:31:11'),
-(1278, 'Cia buvo smagu, pabraizai ir gyveni toliau - gusger', 2, 1, '2020-05-20 17:31:29'),
-(1279, 'atejau, nugalejau, isejau - gusger', 1, 1, '2020-05-20 17:31:47'),
-(1280, 'Bagdono koza puiki - arnbel', 0, 1, '2020-05-20 17:32:46'),
-(1281, 'Destyojai faini - arnbel', 0, 1, '2020-05-20 17:33:16'),
-(1282, 'f', 0, 1, '2020-05-20 17:33:34'),
-(1283, 'Vacius? More like Nacius', 0, 1, '2020-05-20 17:33:52'),
-(1284, 'AutoCad? More like Easy modulis - tomgir', 0, 1, '2020-05-20 17:34:24'),
-(1285, 'Ivadas i gyvenima ', 1, 1, '2020-05-20 17:35:35'),
-(1286, 'Simas yra fainiausias studentas -simru', 0, 1, '2020-05-20 17:36:07'),
-(1287, 'Jūsų komentaras aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 0, 1, '2020-05-20 17:37:04'),
-(1288, 'Vacius Jusas? LabIaUu kAIp Jacius Vusas xdddddddddd', 0, 1, '2020-05-20 17:40:14'),
-(1289, 'simruo', 0, 1, '2020-05-20 17:41:09'),
-(1290, 'Komentuoju', 0, 1, '2020-05-20 20:17:14');
+(1268, 'Maloni aplinka, malonūs studentai', 0, 1, '2020-05-20 17:17:41'),
+(1269, 'Puikūs dėstytojai', 3, 1, '2020-05-20 17:18:20'),
+(1270, 'Trūksta medžiagos', 0, 1, '2020-05-20 17:19:00'),
+(1271, 'Atmosfera puiki!', 0, 1, '2020-05-20 17:19:40'),
+(1272, 'Trūksta vaizdo medžiagos', 1, 1, '2020-05-20 17:21:26'),
+(1273, 'Trūksta džiaugsmo', 0, 1, '2020-05-20 17:26:57'),
+(1274, 'Nepatinka paskaitų laikas', 1, 1, '2020-05-20 17:28:24'),
+(1275, 'Patinka paskaitų laikas', 3, 1, '2020-05-20 17:29:58'),
+(1276, 'Smagu klausytis dėstytojų', 2, 1, '2020-05-20 17:30:41'),
+(1277, 'Visi labai malonūs, nusiskundimų neturiu', 3, 1, '2020-05-20 17:31:11'),
+(1278, 'Čia buvo smagu, braižymas pakeitė mano gyvenimą', 2, 1, '2020-05-20 17:31:29'),
+(1279, 'atejau, nugalejau, isejau 10/10', 1, 1, '2020-05-20 17:31:47'),
+(1280, 'LABAI PATIKO ČIA MOKYTIS', 0, 1, '2020-05-20 17:32:46'),
+(1281, 'Destyojai faini', 0, 1, '2020-05-20 17:33:16'),
+(1282, 'Puiku, nuostabu, šaunu', 0, 1, '2020-05-20 17:33:34'),
+(1283, 'Smagu, ačiū, daug išmokau', 0, 1, '2020-05-20 17:33:52'),
+(1284, 'išvijo iš paskaitos', 0, 1, '2020-05-20 17:34:24'),
+(1285, 'Įvadas į programavimą pakeitė mano požiūrį į gyvenimą', 1, 1, '2020-05-20 17:35:35'),
+(1286, 'Simas yra fainiausias studentas', 0, 1, '2020-05-20 17:36:07'),
+(1287, 'Vertinu modulį labai gerai', 0, 1, '2020-05-20 17:37:04'),
+(1288, 'Vertinu modulį labai gerai', 0, 1, '2020-05-20 17:40:14'),
+(1289, 'Nepatiko modulis', 0, 1, '2020-05-20 17:41:09'),
+(1290, 'Viskas puiku, nusiskundimų neturiu', 0, 1, '2020-05-20 20:17:14'),
+(1293, 'per vieną paskaitą išmokau daugiau nei per 12 metų mokykloj', 0, 1, '2020-05-30 16:14:01'),
+(1294, 'Puikus modulis, daug išmokau!', 0, 1, '2020-05-30 16:14:40'),
+(1295, 'gusger 123321', 0, 1, '2020-05-30 16:17:24'),
+(1296, 'Destytojai puikus ', 0, 1, '2020-05-30 16:19:20');
 
 -- --------------------------------------------------------
 
 --
--- Sukurta duomenų struktūra lentelei `loginai`
+-- Table structure for table `loginai`
 --
 
 CREATE TABLE `loginai` (
@@ -105,7 +109,7 @@ CREATE TABLE `loginai` (
 -- --------------------------------------------------------
 
 --
--- Sukurta duomenų struktūra lentelei `moduliai`
+-- Table structure for table `moduliai`
 --
 
 CREATE TABLE `moduliai` (
@@ -115,7 +119,7 @@ CREATE TABLE `moduliai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Sukurta duomenų kopija lentelei `moduliai`
+-- Dumping data for table `moduliai`
 --
 
 INSERT INTO `moduliai` (`Kodas`, `Pavadinimas`, `Semestras`) VALUES
@@ -215,7 +219,7 @@ INSERT INTO `moduliai` (`Kodas`, `Pavadinimas`, `Semestras`) VALUES
 -- --------------------------------------------------------
 
 --
--- Sukurta duomenų struktūra lentelei `modulio_komentaras`
+-- Table structure for table `modulio_komentaras`
 --
 
 CREATE TABLE `modulio_komentaras` (
@@ -225,7 +229,7 @@ CREATE TABLE `modulio_komentaras` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Sukurta duomenų kopija lentelei `modulio_komentaras`
+-- Dumping data for table `modulio_komentaras`
 --
 
 INSERT INTO `modulio_komentaras` (`Modulio_id`, `Komentaro_id`, `Studento_id`) VALUES
@@ -236,6 +240,8 @@ INSERT INTO `modulio_komentaras` (`Modulio_id`, `Komentaro_id`, `Studento_id`) V
 ('P175B118', 1277, 'C1111'),
 ('P175B505', 1278, 'C1111'),
 ('T120B196', 1279, 'C1111'),
+('P130B001', 1295, 'C1111'),
+('P130B001', 1296, 'C1234'),
 ('P130B001', 1268, 'C2222'),
 ('P175B100', 1280, 'C2222'),
 ('P175B117', 1281, 'C2222'),
@@ -250,12 +256,14 @@ INSERT INTO `modulio_komentaras` (`Modulio_id`, `Komentaro_id`, `Studento_id`) V
 ('P175B100', 1273, 'C6666'),
 ('P130B001', 1286, 'C7777'),
 ('P175B100', 1287, 'C7777'),
-('P175B118', 1288, 'C7777');
+('P175B118', 1288, 'C7777'),
+('P130B001', 1294, 'C8888'),
+('P130B001', 1293, 'C9999');
 
 -- --------------------------------------------------------
 
 --
--- Sukurta duomenų struktūra lentelei `student_login`
+-- Table structure for table `student_login`
 --
 
 CREATE TABLE `student_login` (
@@ -269,12 +277,13 @@ CREATE TABLE `student_login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Sukurta duomenų kopija lentelei `student_login`
+-- Dumping data for table `student_login`
 --
 
 INSERT INTO `student_login` (`Vidkodas`, `Vardas`, `Pavarde`, `Slapyvardis`, `Slaptazodis`, `Elektroninis_pastas`, `Komentaru_kiekis`) VALUES
 ('C0000', 'Donaldas', 'Trumpas', 'dontru', 'stud123', 'dontru@ktu.lt', 3),
 ('C1111', 'Gustas', 'Germanas', 'gusger', 'stud123', 'gusger@ktu.lt', 3),
+('C1234', 'Donas', 'Trombonas', 'dontro', 'stud123', 'dontro@ktu.lt', 3),
 ('C2222', 'Arnas', 'Belauskas', 'arnbel', 'stud123', 'arnbel@ktu.lt', 3),
 ('C3333', 'Tomas', 'Girdzius', 'tomgir', 'stud123', 'tomgir@ktu.lt', 3),
 ('C4444', 'Dalius', 'Deldzius', 'daldel', 'stud123', 'daldel@ktu.lt', 3),
@@ -287,7 +296,7 @@ INSERT INTO `student_login` (`Vidkodas`, `Vardas`, `Pavarde`, `Slapyvardis`, `Sl
 -- --------------------------------------------------------
 
 --
--- Sukurta duomenų struktūra lentelei `upvote`
+-- Table structure for table `upvote`
 --
 
 CREATE TABLE `upvote` (
@@ -298,7 +307,7 @@ CREATE TABLE `upvote` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Sukurta duomenų kopija lentelei `upvote`
+-- Dumping data for table `upvote`
 --
 
 INSERT INTO `upvote` (`Up_id`, `Modulis_id`, `Komentaras_id`, `Studentas_id`) VALUES
@@ -317,7 +326,9 @@ INSERT INTO `upvote` (`Up_id`, `Modulis_id`, `Komentaras_id`, `Studentas_id`) VA
 (290, 'P175B505', 1278, 'C0000'),
 (291, 'P175B100', 1275, 'C0000'),
 (292, 'P175B118', 1277, 'C0000'),
-(293, 'P130B001', 1269, 'C0000');
+(293, 'P130B001', 1269, 'C0000'),
+(294, 'P130B001', 1269, 'C1111'),
+(295, 'P130B001', 1272, 'C1234');
 
 --
 -- Indexes for dumped tables
@@ -374,13 +385,13 @@ ALTER TABLE `upvote`
 -- AUTO_INCREMENT for table `modulio_komentaras`
 --
 ALTER TABLE `modulio_komentaras`
-  MODIFY `Komentaro_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1293;
+  MODIFY `Komentaro_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1297;
 
 --
 -- AUTO_INCREMENT for table `upvote`
 --
 ALTER TABLE `upvote`
-  MODIFY `Up_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=294;
+  MODIFY `Up_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=296;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
